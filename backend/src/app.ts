@@ -7,6 +7,7 @@ import validateToken from "./middlewares/validateToken.js";
 import config from "./config/config.js";
 import logger from "./utils/logger.js";
 import baseRouter from "./routes/base.routes.js"
+import mailRouter from "./routes/mail.routes.js"
 import http from "http";
 
 const app = express();
@@ -41,3 +42,4 @@ app.use(addLogger)
 app.use(validateToken)
 
 app.use("/", baseRouter)
+app.use("/api/mail", mailRouter)
