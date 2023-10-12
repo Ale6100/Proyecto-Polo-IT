@@ -1,16 +1,12 @@
 import nodemailer from "nodemailer"
 import config from "../config/config.js";
 
-//! TESTEANDO
-
-//! NO TERMINADO
-
 const transport = nodemailer.createTransport({
     service: 'gmail',
     port: 587,
     auth: {
-        // user: config.nodemailer.user,
-        // pass: config.nodemailer.pass
+        user: config.nodemailer.user,
+        pass: config.nodemailer.pass
     }
 })
 
