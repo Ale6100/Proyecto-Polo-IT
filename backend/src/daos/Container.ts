@@ -1,5 +1,5 @@
 import companyModel from "./models/companies.js"
-import { CompanyType, CompanyTypeInMongo } from "../../types/company"
+import { CompanyType, CompanyTypeInMongo } from "../types/company.js"
 
 // Esta clase crea un objeto que manipula una colección en MongoDB con documentos dentro. Dichos documentos pueden ser agregados, modificados, borrados y consultados
 
