@@ -60,47 +60,148 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
 ```
 
 ### 1. **Envío de mails** 
+* En la ruta `/api/mail` con el método `POST`, puedes enviar un correo electrónico. 
 
-En la ruta `/api/mail` con el método `POST`, puedes enviar un correo electrónico. 
+  #### 1.1. Solicitud
+  Asegúrese de incluir los siguientes datos en el cuerpo de la solicitud (body):
 
-#### 1.1. Solicitud
-Asegúrese de incluir los siguientes datos en el cuerpo de la solicitud (body):
+  * `from` (string): La dirección de correo electrónico desde la cual se enviará el mail, aunque esto es simbólico porque quien lo envía realmente es el colocado en la variable de entorno NODEMAILER_USER. Por esta razón se recomienda colocar el email de envío dentro del propio html o en el subject de la petición
 
-* `from`: La dirección de correo electrónico desde la cual se enviará el mail, aunque esto es simbólico porque quien lo envía realmente es el colocado en la variable de entorno NODEMAILER_USER. Por esta razón se recomienda colocar el email de envío dentro del propio html o en el subject de la petición
+  * `to` (string): La dirección de correo electrónico de destino a la cual se enviará el correo
 
-* `to`: La dirección de correo electrónico de destino, a la cual se enviará el correo
+  * `subject` (string): Asunto
 
-* `subject`: Asunto
+  * `html` (string): El contenido del correo electrónico en formato HTML
 
-* `html`: El contenido del correo electrónico en formato HTML
+  * `attachments`: Opcional - Un arreglo de objetos que contenga el nombre de los archivos adjuntos junto con sus rutas de origen, por ejemplo `[{filename: "imagen.jpg", path: "https://dummyimage.com/600x400/000/fff"}]`. No se permite enviar archivos muy pesados, queda pendiente averiguar este límite.
 
-* `attachments` (opcional): Un arreglo que contenga el nombre de los archivos adjuntos junto con sus rutas de origen, por ejemplo `[{filename: "imagen.jpg", path: "https://dummyimage.com/600x400/000/fff"}]`. No se permite enviar archivos muy pesados, queda pendiente averiguar dicho límite.
+  #### 1.2. Respuesta
+  Si el correo electrónico se envía correctamente, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
 
-#### 1.2. Respuesta
-Si el correo electrónico se envía correctamente, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
+  ```js
+  {
+      status: "success",
+      message: "Email sent successfully"
+  }
+  ```
 
-```js
-{
-    status: "success",
-    message: "Enviado"
-}
-```
+  Si alguno de los campos requeridos está vacío, se devuelve una respuesta con el estado 400 y el siguiente cuerpo:
 
-Si faltan valores en la solicitud o alguno de los campos requeridos está vacío, se devuelve una respuesta con el estado 400 y el siguiente cuerpo:
+  ```js
+  {
+    status: "error",
+    error: "Incomplete values"
+  }
+  ```
 
-```js
-{
-  status: "error",
-  error: "Valores incompletos"
-}
+  Si alguno de los campos no tiene el tipado correcto, se devuelve una respuesta con el estado 400 y el siguiente cuerpo:
 
-```
+  ```js
+  {
+    status: "error",
+    error: "Incorrect values"
+  }
+  ```
 
-Si se produce un error durante el envío del correo electrónico, se devuelve una respuesta con el estado 500 y el siguiente cuerpo:
+  Si el campo `attachments` se recibe con el tipado incorrecto, se devuelve una respuesta con el estado 400 y el siguiente cuerpo:
 
-```js
-{
-  status: "error",
-  error: "X" // El valor X varía según el mensaje de error específico
-}
-```
+  ```js
+  {
+    status: "error",
+    error: "Attachments must be an array"
+  }
+  ```  
+
+  Si se produce un error interno durante el envío del correo electrónico, se devuelve una respuesta con el estado 500 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "X" // El valor X varía según el mensaje de error específico
+  }
+  ```
+
+### 1. **Manejo de empresas** 
+
+* En la ruta `/api/companies` con el método `GET`, puedes obtener todas las empresas de la base de datos.
+
+  #### 1.1. Solicitud
+  No es necesario enviar ningún dato especial en la solicitud.
+
+  #### 1.2. Respuesta
+  Si la petición se resuelve, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
+
+  ```js
+  {
+      status: "success",
+      payload: [/* Array de empresas */]
+  }
+  ```
+
+  Si se produce un error interno durante la petición, se devuelve una respuesta con el estado 500 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "X" // El valor X varía según el mensaje de error específico
+  }
+  ```
+
+* En la ruta `/api/companies` con el método `POST`, puedes agregar una empresa a la base de datos.
+
+  #### 1.1. Solicitud
+  Asegúrese de incluir los siguientes datos en el cuerpo de la solicitud (body):
+
+  * `info` (string): Información general
+  * `logo` (string): Logo
+  * `video` (string): Video de presentación
+  * `linksSocialNetworks` (Array de strings): Links de las redes sociales
+  * `website` (string): Página web
+  * `mail` (string): Mail
+
+  #### 1.2. Respuesta
+  Si la petición se resuelve, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
+
+  ```js
+  {
+      status: "success",
+      payload: "X" // El valo de X es el id de la nueva empresa asignado por MongoDB
+  }
+  ```
+
+  Si alguno de los campos requeridos está vacío, se devuelve una respuesta con el estado 400 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "Incomplete values"
+  }
+
+  ```
+
+  Si alguno de los campos no tiene el tipado correcto, se devuelve una respuesta con el estado 400 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "Incorrect values"
+  }
+  ```  
+
+  Si el campo `linksSocialNetworks` no es un array de strings se devuelve una respuesta con el estado 400 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "linksSocialNetworks must be an array of strings"
+  }
+  ```
+
+  Si se produce un error interno durante la petición, se devuelve una respuesta con el estado 500 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "X" // El valor X varía según el mensaje de error específico
+  }
+  ```
