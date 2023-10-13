@@ -7,7 +7,17 @@ const send = async (req: Request, res: Response) => { // En /api/mail con el mé
 
     if (!from || !to || !subject || !html) {
         req.logger.error(`${req.infoPeticion} | Incomplete values`)
-        return res.status(400).send({ status: "error", error: "Valores incompletos" })
+        return res.status(400).send({ status: "error", error: "Incomplete values" })
+    }
+
+    if (typeof from !== "string" || typeof to !== "string" || typeof subject !== "string" || typeof html !== "string") {
+        req.logger.error(`${req.infoPeticion} | Incorrect values`)
+        return res.status(400).send({ status: "error", error: "Incorrect values" })
+    }
+
+    if (attachments && !Array.isArray(attachments)) {
+        req.logger.error(`${req.infoPeticion} | Attachments must be an array`)
+        return res.status(400).send({ status: "error", error: "Attachments must be an array" })
     }
 
     const response = await sendMail({
@@ -19,7 +29,7 @@ const send = async (req: Request, res: Response) => { // En /api/mail con el mé
     })
 
     if (response === "success") {
-        return res.status(200).send({ status: "success", message: "Enviado" })
+        return res.status(200).send({ status: "success", message: "Email sent successfully" })
     
     } else {
         req.logger.fatal(`${req.infoPeticion} | ${response}`)
