@@ -9,11 +9,17 @@ npm install
 Es necesario crear variables de entorno mediante la elaboración de un archivo .env en el mismo nivel que la carpeta src. Este archivo debe completarse con los siguientes campos, los cuales deben modificarse con tus propias credenciales en lugar del valor "X":
 
 ```env
+NODEMAILER_USER = X # Gmail configurado en Nodemailer que se usa para enviar los mails
+NODEMAILER_PASS = X # Contraseña que te proporciona nodemailer
+
 URL_FRONTEND1 = X
 URL_FRONTEND2 = X # URLs de los frontends que desees dar permisos de acceso, sin barra lateral final
 URL_FRONTEND3 = X
 
-TOKEN_GRAL = X # Token arbitrario personal, necesario para acceder a los endpoints
+TOKEN_GRAL = X # Cadena de caracteres utilizado como mecanismo de autenticación para asegurar que solamente los usuarios que presenten este token en los encabezados de sus solicitudes puedan acceder al backend. Importante: Su valor tiene que ser el mismo que el de la variable de entorno VITE_ACCESS_TOKEN que ponés en el frontend
+
+MONGO_URL = X # URL de mongo, la que ponemos dentro de mongoose.connect(X)
+
 ```
 
 ## Desarrollo 👷
@@ -36,6 +42,166 @@ Para ejecutar el proyecto compilado, utiliza el comando:
 npm start
 ```
 
-Una vez que veas el mensaje "Servidor escuchando en el puerto 8080" (puerto configurado por defecto), podrás comenzar a utilizarlo sin problemas.
+Una vez que veas los mensajes "Servidor escuchando en el puerto 8080" (puerto configurado por defecto) y "Base de mongo conectada", podrás comenzar a utilizarlo sin problemas.
 
 Asegúrate de que la parte frontend esté ejecutándose
+
+## Endpoints 🕵️
+
+Antes de presentar los endpoints disponibles, debes saber que para acceder a ellos se necesita enviar un token de acceso especial en los encabezados utilizando el esquema de autenticación Bearer simple, esto es, enviando Authorization: Bearer X en la petición, donde X es el valor del token definido en la variable de entorno TOKEN_GRAL.
+
+Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y el siguiente cuerpo:
+
+```js
+{
+    status: "error",
+    error: `Forbidden | Token de acceso inválido`
+}
+```
+
+### 1. **Envío de mails** 
+* En la ruta `/api/mail` con el método `POST`, puedes enviar un correo electrónico. 
+
+  #### 1.1. Solicitud
+  Asegúrese de incluir los siguientes datos en el cuerpo de la solicitud (body):
+
+  * `from` (string): La dirección de correo electrónico desde la cual se enviará el mail, aunque esto es simbólico porque quien lo envía realmente es el colocado en la variable de entorno NODEMAILER_USER. Por esta razón se recomienda colocar el email de envío dentro del propio html o en el subject de la petición
+
+  * `to` (string): La dirección de correo electrónico de destino a la cual se enviará el correo
+
+  * `subject` (string): Asunto
+
+  * `html` (string): El contenido del correo electrónico en formato HTML
+
+  * `attachments`: Opcional - Un arreglo de objetos que contenga el nombre de los archivos adjuntos junto con sus rutas de origen, por ejemplo `[{filename: "imagen.jpg", path: "https://dummyimage.com/600x400/000/fff"}]`. No se permite enviar archivos muy pesados, queda pendiente averiguar este límite.
+
+  #### 1.2. Respuesta
+  Si el correo electrónico se envía correctamente, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
+
+  ```js
+  {
+      status: "success",
+      message: "Email sent successfully"
+  }
+  ```
+
+  Si alguno de los campos requeridos está vacío, se devuelve una respuesta con el estado 400 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "Incomplete values"
+  }
+  ```
+
+  Si alguno de los campos no tiene el tipado correcto, se devuelve una respuesta con el estado 400 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "Incorrect values"
+  }
+  ```
+
+  Si el campo `attachments` se recibe con el tipado incorrecto, se devuelve una respuesta con el estado 400 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "Attachments must be an array"
+  }
+  ```  
+
+  Si se produce un error interno durante el envío del correo electrónico, se devuelve una respuesta con el estado 500 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "X" // El valor X varía según el mensaje de error específico
+  }
+  ```
+
+### 1. **Manejo de empresas** 
+
+* En la ruta `/api/companies` con el método `GET`, puedes obtener todas las empresas de la base de datos.
+
+  #### 1.1. Solicitud
+  No es necesario enviar ningún dato especial en la solicitud.
+
+  #### 1.2. Respuesta
+  Si la petición se resuelve, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
+
+  ```js
+  {
+      status: "success",
+      payload: [/* Array de empresas */]
+  }
+  ```
+
+  Si se produce un error interno durante la petición, se devuelve una respuesta con el estado 500 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "X" // El valor X varía según el mensaje de error específico
+  }
+  ```
+
+* En la ruta `/api/companies` con el método `POST`, puedes agregar una empresa a la base de datos.
+
+  #### 1.1. Solicitud
+  Asegúrese de incluir los siguientes datos en el cuerpo de la solicitud (body):
+
+  * `info` (string): Información general
+  * `logo` (string): Logo
+  * `video` (string): Video de presentación
+  * `linksSocialNetworks` (Array de strings): Links de las redes sociales
+  * `website` (string): Página web
+  * `mail` (string): Mail
+
+  #### 1.2. Respuesta
+  Si la petición se resuelve, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
+
+  ```js
+  {
+      status: "success",
+      payload: "X" // El valo de X es el id de la nueva empresa asignado por MongoDB
+  }
+  ```
+
+  Si alguno de los campos requeridos está vacío, se devuelve una respuesta con el estado 400 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "Incomplete values"
+  }
+
+  ```
+
+  Si alguno de los campos no tiene el tipado correcto, se devuelve una respuesta con el estado 400 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "Incorrect values"
+  }
+  ```  
+
+  Si el campo `linksSocialNetworks` no es un array de strings se devuelve una respuesta con el estado 400 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "linksSocialNetworks must be an array of strings"
+  }
+  ```
+
+  Si se produce un error interno durante la petición, se devuelve una respuesta con el estado 500 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "X" // El valor X varía según el mensaje de error específico
+  }
+  ```
