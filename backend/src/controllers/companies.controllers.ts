@@ -29,13 +29,13 @@ const saveOne = async (req: Request, res: Response) => { // En /api/companies co
         }
     
         if (!Array.isArray(linksSocialNetworks)) {
-            req.logger.error("linksSocialNetworks must be an array of strings")
-            return res.status(400).send({ status: "error", error: "linksSocialNetworks must be an array of strings" })
+            req.logger.error("Incorrect values")
+            return res.status(400).send({ status: "error", error: "Incorrect values" })
         }
 
-        if (linksSocialNetworks.some(link => typeof link !== "string")) {
-            req.logger.error("linksSocialNetworks must be an array of strings")
-            return res.status(400).send({ status: "error", error: "linksSocialNetworks must be an array of strings" })
+        if (linksSocialNetworks.some(link => typeof link.url !== "string" || typeof link.name !== "string")) {
+            req.logger.error("Incorrect values")
+            return res.status(400).send({ status: "error", error: "Incorrect values" })
         }
     
         const newObject = {

@@ -1,8 +1,13 @@
+export interface TypeSocialNetwork {
+    name: string,
+    url: string
+}
+
 export interface CompanyType {
     info: string,
     logo: string,
     video: string,
-    linksSocialNetworks: string[],
+    linksSocialNetworks: TypeSocialNetwork[],
     website: string,
     mail: string
 }

@@ -155,7 +155,7 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
   * `info` (string): Información general
   * `logo` (string): Logo
   * `video` (string): Video de presentación
-  * `linksSocialNetworks` (Array de strings): Links de las redes sociales
+  * `linksSocialNetworks` (array): Es un array de objetos. Cada objeto debe tener el campo `name` y `url` de la red social que representa
   * `website` (string): Página web
   * `mail` (string): Mail
 
@@ -185,15 +185,6 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
   {
     status: "error",
     error: "Incorrect values"
-  }
-  ```  
-
-  Si el campo `linksSocialNetworks` no es un array de strings se devuelve una respuesta con el estado 400 y el siguiente cuerpo:
-
-  ```js
-  {
-    status: "error",
-    error: "linksSocialNetworks must be an array of strings"
   }
   ```
 

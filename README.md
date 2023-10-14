@@ -6,7 +6,7 @@ _Tanto el proyecto como los archivos README están en construcción_
 
 * Trabajamos principalmente en la rama `develop`
 
-* Enlaces:
+* Deploys de la rama `main`:
     * Frontend: https://proyecto-polo-it.netlify.app
     * Backend: https://proyecto-polo-it-backend.onrender.com
 
