@@ -17,7 +17,7 @@ VITE_ACCESS_TOKEN = X # Cadena de caracteres utilizado como mecanismo de autenti
 Nota: Puedes acceder a las variables desde el objeto ```import.meta.env```, por ejemplo:
 
 ```js
-import.meta.env.VITE_BACKEND_URL
+const backendUrl = import.meta.env.VITE_BACKEND_URL
 ```
 
 ## Despliegue 📦
