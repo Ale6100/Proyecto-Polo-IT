@@ -1,0 +1,24 @@
+.home-page{
+    /* background-color: rgb(40, 100, 212); */
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.home-container{
+    padding: 0 0 0 30px;
+}
+.home-title{
+    font-size: 60px;
+    color: #c53a3a;
+}
+.home-btn{
+    padding: 10px;
+    border: 0;
+    border-radius: 5px;
+    margin: 15px 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #fff;
+    background-color: #c53a3a;
+}
