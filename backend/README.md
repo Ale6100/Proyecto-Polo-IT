@@ -121,14 +121,14 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
   }
   ```
 
-### 1. **Manejo de empresas** 
+### 2. **Manejo de empresas** 
 
 * En la ruta `/api/companies` con el método `GET`, puedes obtener todas las empresas de la base de datos.
 
-  #### 1.1. Solicitud
+  #### 2.1. Solicitud
   No es necesario enviar ningún dato especial en la solicitud.
 
-  #### 1.2. Respuesta
+  #### 2.2. Respuesta
   Si la petición se resuelve, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
 
   ```js
@@ -149,7 +149,7 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
 
 * En la ruta `/api/companies` con el método `POST`, puedes agregar una empresa a la base de datos.
 
-  #### 1.1. Solicitud
+  #### 2.3. Solicitud
   Asegúrese de incluir los siguientes datos en el cuerpo de la solicitud (body):
 
   * `info` (string): Información general
@@ -159,13 +159,13 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
   * `website` (string): Página web
   * `mail` (string): Mail
 
-  #### 1.2. Respuesta
+  #### 2.4. Respuesta
   Si la petición se resuelve, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
 
   ```js
   {
       status: "success",
-      payload: "X" // El valo de X es el id de la nueva empresa asignado por MongoDB
+      payload: "X" // El valor de X es el id de la nueva empresa asignado por MongoDB
   }
   ```
 
