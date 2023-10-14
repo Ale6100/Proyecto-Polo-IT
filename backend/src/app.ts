@@ -1,5 +1,5 @@
 import express from "express";
-import __dirname from "./utils.js";
+import __dirname, { waitFor } from "./utils.js";
 import cors from "cors"
 import corsOptions from "./middlewares/cors.js";
 import addLogger from "./middlewares/addLogger.js";
@@ -8,17 +8,20 @@ import config from "./config/config.js";
 import logger from "./utils/logger.js";
 import baseRouter from "./routes/base.routes.js"
 import mailRouter from "./routes/mail.routes.js"
+import companiesRouter from "./routes/companies.routes.js";
 import http from "http";
+import connect from "./daos/connect.js";
 
 const app = express();
 
 const PORT = process.env["PORT"] || 8080; // Elige el puerto 8080 en caso de que no venga definido uno por defecto como variable de entorno
 
-const server: http.Server = app.listen(PORT, () => { // Escuchamos en el puerto cada vez que se reconozca un nuevo proceso worker. Todos los procesos se comparten el mismo puerto
+const server: http.Server = app.listen(PORT, async () => { // Escuchamos en el puerto cada vez que se reconozca un nuevo proceso worker. Todos los procesos se comparten el mismo puerto
     const address = server.address();
 
     if (typeof address === "object" && address !== null) {
         logger.info(`Servidor escuchando en el puerto ${address.port}`);
+        await connect();
     }
 }); 
 server.on("error", error => logger.fatal(`${error}`))
@@ -33,6 +36,7 @@ if (config.site.urlfrontend3) whitelist.push(config.site.urlfrontend3)
 
 if (whitelist.length === 0) {
     logger.fatal("Debes colocar al menos una url frontend en las variables de entorno! Visita https://github.com/Ale6100/Curso-backend#despliegue-")
+    await waitFor(200)
     throw new Error(`Debes colocar al menos una url frontend en las variables de entorno! Visita https://github.com/Ale6100/Curso-backend#despliegue-`) 
 }
 
@@ -43,3 +47,4 @@ app.use(validateToken)
 
 app.use("/", baseRouter)
 app.use("/api/mail", mailRouter)
+app.use("/api/companies", companiesRouter)
