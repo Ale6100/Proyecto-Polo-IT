@@ -16,3 +16,5 @@ export interface CompanyTypeInMongo extends CompanyType {
     _id: string,
     __v: number
 }
+
+export interface OptionalCompanyType extends Partial<CompanyType> {} // Igual a la interfaz CompanyType, pero con sus propiedades opcionales
