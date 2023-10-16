@@ -98,16 +98,10 @@ const deleteById = async (req: Request, res: Response) => { // En /api/companies
     const { id } = req.params
 
     try {
-        if (!id) {
-            req.logger.error("Incomplete values")
-            return res.status(400).send({ status: "error", error: "Incomplete values" })
-        }
-
         if (typeof id !== "string") {
-            req.logger.error("Incorrect values")
-            return res.status(400).send({ status: "error", error: "Incorrect values" })
+            req.logger.error("Parameter id must be a string")
+            return res.status(400).send({ status: "error", error: "Parameter id must be a string" })
         }
-
     
         await container.deleteById(id)
         return res.status(200).send({ status: "success", message: "Correctly removed" })        
