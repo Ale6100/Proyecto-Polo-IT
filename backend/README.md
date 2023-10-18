@@ -155,7 +155,7 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
   * `info` (string): Información general
   * `logo` (string): Logo
   * `video` (string): Video de presentación
-  * `linksSocialNetworks` (Array de strings): Links de las redes sociales
+  * `linksSocialNetworks` (array): Es un array de objetos. Cada objeto debe tener el campo `name` y `url` de la red social que representa
   * `website` (string): Página web
   * `mail` (string): Mail
 
@@ -186,14 +186,80 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
     status: "error",
     error: "Incorrect values"
   }
-  ```  
+  ```
 
-  Si el campo `linksSocialNetworks` no es un array de strings se devuelve una respuesta con el estado 400 y el siguiente cuerpo:
+  Si se produce un error interno durante la petición, se devuelve una respuesta con el estado 500 y el siguiente cuerpo:
 
   ```js
   {
     status: "error",
-    error: "linksSocialNetworks must be an array of strings"
+    error: "X" // El valor X varía según el mensaje de error específico
+  }
+  ```
+
+* En la ruta `/api/companies/id` con el método `UPDATE`, puedes actualizar la empresa con el `id` especificado.
+
+  #### 2.5. Solicitud
+  En el cuerpo de la solicitud puedes enviar las propiedades que desees actualizar (lee la sección 2.3 para saber cuáles son), por lo tanto ninguna es obligatoria.
+
+  #### 2.6. Respuesta
+  Si la petición se resuelve, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
+
+  ```js
+  {
+      status: "success",
+      message: "Correctly updated"
+  }
+  ```
+
+  Si el parámetro `id` no es de tipo string, se devuelve una respuesta con el estado 400 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "Parameter id must be a string"
+  }
+  ```
+
+  Si alguno de los campos enviados no tiene el tipado correcto, se devuelve una respuesta con el estado 400 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "Incorrect values"
+  }
+  ```
+
+  Si se produce un error interno durante la petición, se devuelve una respuesta con el estado 500 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "X" // El valor X varía según el mensaje de error específico
+  }
+  ```
+
+* En la ruta `/api/companies/id` con el método `DELETE`, puedes eliminar la empresa con el `id` especificado.
+
+  #### 2.7. Solicitud
+  No es necesario enviar ninguna información en el cuerpo de la solicitud.
+
+  #### 2.8. Respuesta
+  Si la petición se resuelve, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
+
+  ```js
+  {
+      status: "success",
+      message: "Correctly removed"
+  }
+  ```
+
+  Si el parámetro `id` no es de tipo string, se devuelve una respuesta con el estado 400 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "Parameter id must be a string"
   }
   ```
 
