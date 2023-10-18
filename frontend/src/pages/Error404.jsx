@@ -7,7 +7,7 @@ const Error404 = () => {
     }, []);
 
     return (
-        <div className='error404-h1'>
+        <div className='error404'>
             <h1>Error 404 | Sitio no encontrado</h1>
         </div>
     );

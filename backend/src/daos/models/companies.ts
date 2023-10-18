@@ -18,7 +18,7 @@ const schema = new mongoose.Schema({ // Estructura que tendrá cada documento
     },
 
     linksSocialNetworks: {
-        type: [String],
+        type: Array,
         required: true,
     },
 
