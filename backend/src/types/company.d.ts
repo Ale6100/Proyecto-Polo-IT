@@ -4,12 +4,15 @@ export interface TypeSocialNetwork {
 }
 
 export interface CompanyType {
+    name: string,
     info: string,
     logo: string,
     video: string,
     linksSocialNetworks: TypeSocialNetwork[],
     website: string,
-    mail: string
+    mail: string,
+    category: string[],
+    productOrService: string[]
 }
 
 export interface CompanyTypeInMongo extends CompanyType {
