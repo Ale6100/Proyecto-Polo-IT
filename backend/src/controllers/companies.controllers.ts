@@ -14,7 +14,7 @@ const saveOne = async (req: Request, res: Response) => { // En /api/companies co
             return res.status(400).send({ status: "error", error: "Incomplete values" })
         }
 
-        if (typeof name !== "string" || typeof info !== "string" || typeof logo !== "string" || typeof video !== "string" || !Array.isArray(linksSocialNetworks) || typeof website !== "string" || typeof mail !== "string" || !Array.isArray(category) || !Array.isArray(productOrService)) {
+        if (typeof name !== "string" || typeof info !== "string" || typeof logo !== "string" || typeof video !== "string" || !Array.isArray(linksSocialNetworks) || typeof website !== "string" || !Array.isArray(mail) || !Array.isArray(category) || !Array.isArray(productOrService)) {
             req.logger.error("Incorrect values")
             return res.status(400).send({ status: "error", error: "Incorrect values" })
         }
@@ -23,6 +23,11 @@ const saveOne = async (req: Request, res: Response) => { // En /api/companies co
             req.logger.error("Incorrect values")
             return res.status(400).send({ status: "error", error: "Incorrect values" })
         }
+
+        if (mail.some((m: string) => typeof m !== "string")) {
+            req.logger.error("Incorrect values")
+            return res.status(400).send({ status: "error", error: "Incorrect values" })
+        }        
 
         if (category.some((cat: string) => typeof cat !== "string")) {
             req.logger.error("Incorrect values")
@@ -80,7 +85,7 @@ const updateById = async (req: Request, res: Response) => { // En /api/companies
         || ((video || video === "") && typeof video !== "string")
         || (linksSocialNetworks && !Array.isArray(linksSocialNetworks))        
         || (website && typeof website !== "string")
-        || (mail && typeof mail !== "string")
+        || (mail && !Array.isArray(mail))
         || (category && !Array.isArray(category))
         || (productOrService && !Array.isArray(productOrService))) {
             req.logger.error("Incorrect values")
@@ -91,6 +96,11 @@ const updateById = async (req: Request, res: Response) => { // En /api/companies
             req.logger.error("Incorrect values")
             return res.status(400).send({ status: "error", error: "Incorrect values" })
         }
+
+        if (mail && mail.some((m: string) => typeof m !== "string")) {
+            req.logger.error("Incorrect values")
+            return res.status(400).send({ status: "error", error: "Incorrect values" })
+        }        
 
         if (category && category.some((cat: string) => typeof cat !== "string")) {
             req.logger.error("Incorrect values")
