@@ -158,7 +158,7 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
   * `video` (string): Video de presentación
   * `linksSocialNetworks` (array): Es un array de objetos. Cada objeto debe tener el campo `name` y `url` de la red social que representa
   * `website` (string): Página web
-  * `mail` (string): Mail
+  * `mail` (array): Es un array de strings. Cada uno representa un correo electrónico distinto
   * `category` (array): Es un array de strings. Representan las categorías generales de la empresa
   * `productOrService` (array): Es un array de strings. Representan los productos o servicios de la empresa
 
