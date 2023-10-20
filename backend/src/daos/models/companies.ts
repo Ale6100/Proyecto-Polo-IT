@@ -2,6 +2,11 @@ import mongoose from "mongoose";
 
 const collection = 'companies'; // Nombre de la colección a manipular
 const schema = new mongoose.Schema({ // Estructura que tendrá cada documento
+    name: {
+        type: String,
+        required: true
+    },
+    
     info: {
         type: String,
         required: true
@@ -14,11 +19,16 @@ const schema = new mongoose.Schema({ // Estructura que tendrá cada documento
 
     video: {
         type: String,
-        required: true
+        default: ""
     },
 
     linksSocialNetworks: {
-        type: Array,
+        type: [
+            {
+                type: Object,
+                required: false
+            }
+        ],
         required: true,
     },
 
@@ -30,6 +40,26 @@ const schema = new mongoose.Schema({ // Estructura que tendrá cada documento
     mail: {
         type: String,
         required: false, 
+    },
+
+    category: {
+        type: [
+            {
+                type: String,
+                required: false
+            }
+        ],
+        required: true
+    },
+
+    productOrService: {
+        type: [
+            {
+                type: String,
+                required: false
+            }
+        ],
+        required: true
     }
 })
 
