@@ -10,7 +10,7 @@ export interface CompanyType {
     video: string,
     linksSocialNetworks: TypeSocialNetwork[],
     website: string,
-    mail: string,
+    mail: string[],
     category: string[],
     productOrService: string[]
 }
