@@ -38,7 +38,12 @@ const schema = new mongoose.Schema({ // Estructura que tendrá cada documento
     },
 
     mail: {
-        type: String,
+        type: [
+            {
+                type: String,
+                required: false
+            }
+        ],
         required: false, 
     },
 
