@@ -155,12 +155,11 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
   * `name` (string): Nombre de la empresa
   * `info` (string): Información general
   * `logo` (string): Logo
-  * `video` (string): Video de presentación
-  * `linksSocialNetworks` (array): Es un array de objetos. Cada objeto debe tener el campo `name` y `url` de la red social que representa
+  * `video` (string): Video de presentación. Puede ser un string vacío en caso de que la empresa no posea
   * `website` (string): Página web
-  * `mail` (array): Es un array de strings. Cada uno representa un correo electrónico distinto
-  * `category` (array): Es un array de strings. Representan las categorías generales de la empresa
-  * `productOrService` (array): Es un array de strings. Representan los productos o servicios de la empresa
+  * `mail` (array): Es un array de strings. Cada uno representa un correo electrónico distinto de la empresa
+  * `linksSocialNetworks` (array): Es un array de objetos. Cada objeto debe tener el campo `name` y `url` de la red social que representa
+  * `bigdata`, `cloud`, `testing`, `softwarepropio`, `softwarepropioverticales`, `softwareterceros`, `softwaretercerosverticales`, `asesoriait`, `mantenimiento`, `actividadesexterior`, `capacitacion`, `consultoria` son booleanos, el valor indica si le corresponde o no a la empresa
 
   #### 2.4. Respuesta
   Si la petición se resuelve, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
@@ -203,7 +202,7 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
 * En la ruta `/api/companies/id` con el método `PUT`, puedes actualizar la empresa con el `id` especificado.
 
   #### 2.5. Solicitud
-  En el cuerpo de la solicitud puedes enviar las propiedades que desees actualizar (lee la sección 2.3 para saber cuáles son), por lo tanto ninguna es obligatoria.
+  En el cuerpo de la solicitud debes enviar sólo las propiedades que desees actualizar (lee la sección 2.3 para saber cuáles son), por lo tanto ninguna es obligatoria.
 
   #### 2.6. Respuesta
   Si la petición se resuelve, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
