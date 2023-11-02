@@ -1,27 +1,42 @@
-import './Footer.css';
+import styled from 'styled-components';
 
+const FooterPage = styled.footer`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #3164c2;
+`;
+const FooterText = styled.h3`
+    font-size: medium;
+    text-decoration: underline;
+    margin-bottom: 10px;
+`;
+const FooterLink = styled.ul`
+    display: flex;
+    list-style: none;
+    gap: 50px;
+    font-size: medium;
+`;
 
 const Footer = () => {
     return(
-        <footer>
-            <div className="flex-footer">
-                <div className='flex-derecha'>
-                    <h3 className="h3-footer">noticias de la empresa</h3>
-                    <button>boton para las noticias</button>
-                </div>
-                <div>
-                    <ul className="menu-redes">
-                        <li className="redes">aqui va las redes</li>
-                        <li className="redes">aqui va las redes</li>
-                        <li className="redes">aqui va las redes</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 className="h3-footer">espacio para contenido de la empresa</h3>
-                    <p>aqui el correo de la empresa</p>
-                </div>
+        <FooterPage>
+            <div>
+                <FooterText>noticias de la empresa</FooterText>
+                <button>boton para las noticias</button>
             </div>
-        </footer>
+            <div>
+                <FooterLink>
+                    <li>aqui va las redes</li>
+                    <li>aqui va las redes</li>
+                    <li>aqui va las redes</li>
+                </FooterLink>
+            </div>
+            <div>
+                <FooterText>espacio para contenido de la empresa</FooterText>
+                <p>aqui el correo de la empresa</p>
+            </div>
+        </FooterPage>
     );
 }
 
