@@ -154,7 +154,7 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
 
   * `name` (string): Nombre de la empresa
   * `info` (string): Información general
-  * `logo` (string): Logo
+  * `logo` (string): Logo. Puede ser un string vacío en caso de que la empresa no posea
   * `video` (string): Video de presentación. Puede ser un string vacío en caso de que la empresa no posea
   * `website` (string): Página web
   * `mail` (array): Es un array de strings. Cada uno representa un correo electrónico distinto de la empresa
