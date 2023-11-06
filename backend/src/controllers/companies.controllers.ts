@@ -9,7 +9,7 @@ const saveOne = async (req: Request, res: Response) => { // En /api/companies co
     const { name, info, logo, video, website, mail, linksSocialNetworks, bigdata, cloud, testing, softwarepropio, softwarepropioverticales, softwareterceros, softwaretercerosverticales, asesoriait, mantenimiento, actividadesexterior, capacitacion, consultoria } = req.body
 
     try {
-        if (!name || !info || !logo || typeof video === "undefined" || !website || !mail || !linksSocialNetworks) {
+        if (!name || !info || typeof logo === "undefined" || typeof video === "undefined" || !website || !mail || !linksSocialNetworks) {
             req.logger.error("Incomplete values")
             return res.status(400).send({ status: "error", error: "Incomplete values" })
         }
@@ -81,7 +81,7 @@ const updateById = async (req: Request, res: Response) => { // En /api/companies
 
         if ((name && typeof name !== "string") // Verifica que las propiedades que hayan sido enviadas tengan el tipado correcto
         || (info && typeof info !== "string")
-        || (logo && typeof logo !== "string")
+        || ((logo || logo === "") && typeof logo !== "string")        
         || ((video || video === "") && typeof video !== "string")        
         || (website && typeof website !== "string")
         || (mail && !Array.isArray(mail))
@@ -116,7 +116,7 @@ const updateById = async (req: Request, res: Response) => { // En /api/companies
 
         if (name) newObj.name = name
         if (info) newObj.info = info
-        if (logo) newObj.logo = logo
+        if (logo || logo === "") newObj.logo = logo
         if (video || video === "") newObj.video = video
         if (website) newObj.website = website
         if (mail) newObj.mail = mail

@@ -14,7 +14,7 @@ const schema = new mongoose.Schema({ // Estructura que tendrá cada documento
 
     logo: {
         type: String,
-        required: true
+        default: ""
     },
 
     video: {
