@@ -130,6 +130,8 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
 
   * `page` (string): La página a solicitar. Actualmente cada página tiene un máximo de 10 elementos. El valor predeterminado es 1.
 
+  * En los query parameters se colocan todos los filtros que desees aplicar sobre la lista de empresas a obtener. Los filtros son aquellas propiedades booleanas que se muestran en la sección 2.3. Todos aquellos filtros que no se pasen, no se considerarán. Por ejemplo `/api/companies/2?bigdata=true&cloud=false` trae la segunda página de la lista de todas las empresas cuya propiedad bigdata y cloud son true y false respectivamente.
+
   #### 2.2. Respuesta
   Si la petición se resuelve, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
 
