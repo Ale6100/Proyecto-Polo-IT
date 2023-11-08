@@ -1,7 +1,7 @@
 import __dirname from "../utils.js";
 import { Response, Request } from "express";
 import Container from "../daos/Container.js";
-import { OptionalCompanyType, TypeSocialNetwork } from "../types/company.js";
+import { FiltersType, OptionalCompanyType, TypeSocialNetwork } from "../types/company.js";
 
 const container = new Container()
 
@@ -61,7 +61,30 @@ const saveOne = async (req: Request, res: Response) => { // En /api/companies co
 
 const getAll = async (req: Request, res: Response) => { // En /api/companies con el método GET se pueden traer todas las empresas
     try {
-        const response = await container.getAll()
+        const { page } = req.params
+        const { bigdata, cloud, testing, softwarepropio, softwarepropioverticales, softwareterceros, softwaretercerosverticales, asesoriait, mantenimiento, actividadesexterior, capacitacion, consultoria } = req.query
+        
+        const filters: FiltersType = {}
+
+        if (bigdata === "false" || bigdata === "true") filters.bigdata = JSON.parse(bigdata)
+        if (cloud === "false" || cloud === "true") filters.cloud = JSON.parse(cloud)
+        if (testing === "false" || testing === "true") filters.testing = JSON.parse(testing)
+        if (softwarepropio === "false" || softwarepropio === "true") filters.softwarepropio = JSON.parse(softwarepropio)
+        if (softwarepropioverticales === "false" || softwarepropioverticales === "true") filters.softwarepropioverticales = JSON.parse(softwarepropioverticales)
+        if (softwareterceros === "false" || softwareterceros === "true") filters.softwareterceros = JSON.parse(softwareterceros)
+        if (softwaretercerosverticales === "false" || softwaretercerosverticales === "true") filters.softwaretercerosverticales = JSON.parse(softwaretercerosverticales)
+        if (asesoriait === "false" || asesoriait === "true") filters.asesoriait = JSON.parse(asesoriait)
+        if (mantenimiento === "false" || mantenimiento === "true") filters.mantenimiento = JSON.parse(mantenimiento)
+        if (actividadesexterior === "false" || actividadesexterior === "true") filters.actividadesexterior = JSON.parse(actividadesexterior)
+        if (capacitacion === "false" || capacitacion === "true") filters.capacitacion = JSON.parse(capacitacion)
+        if (consultoria === "false" || consultoria === "true") filters.consultoria = JSON.parse(consultoria)
+
+        let page_ = 1
+        if (page) {
+            page_ = parseInt(page)
+        }
+
+        const response = await container.getAll(page_, filters)
         return res.status(200).send({ status: "success", payload: response })        
     } catch (error) {
         req.logger.fatal(`${req.infoPeticion} | ${error}`)

@@ -123,10 +123,12 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
 
 ### 2. **Manejo de empresas** 
 
-* En la ruta `/api/companies` con el método `GET`, puedes obtener todas las empresas de la base de datos.
+* En la ruta `/api/companies/:page` con el método `GET` puedes obtener la página `page` de la lista de empresas de la base de datos.
 
   #### 2.1. Solicitud
-  No es necesario enviar ningún dato especial en la solicitud.
+  La solicitud está en la propia url:
+
+  * `page` (string): La página a solicitar. Actualmente cada página tiene un máximo de 10 elementos. El valor predeterminado es 1.
 
   #### 2.2. Respuesta
   Si la petición se resuelve, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
