@@ -36,6 +36,9 @@
 .logo-nav{
     height: 45px;
 }
+.active{
+    border-bottom-color: #3164c2;
+}
 @media screen and (max-width:767px){
     .menu-nav{
         display: none;

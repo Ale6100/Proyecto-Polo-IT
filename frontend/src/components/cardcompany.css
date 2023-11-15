@@ -1,0 +1,4 @@
+.container__detail-card{
+    background: linear-gradient(90deg, rgba(138,11,11,1) 0%, rgba(208,32,32,1) 36%, rgba(29,20,201,1) 68%);
+    height: 80vh;
+}
