@@ -2,6 +2,7 @@ import './Home.css';
 import Categories from '../components/Categories';
 import Companies from '../components/Companies';
 import styled from 'styled-components';
+import CompaniesContanier from '../containers/CompaniesContainer';
 
 const Wrap = styled.div`
     display: flex;
@@ -14,7 +15,7 @@ const Home = () => {
     return (
         <Wrap>
             <Categories></Categories>
-            <Companies></Companies>
+            <CompaniesContanier></CompaniesContanier>
         </Wrap>
     );
 }
