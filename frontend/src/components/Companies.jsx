@@ -1,15 +1,28 @@
 import styled from "styled-components";
 
+const Wrap = styled.div`
+
+`
 const BoxCompanies = styled.div`
 
 `
+const ImgCompanies = styled.div`
 
-const Companies = () => {
+`
+const TitleCompanies = styled.h1`
+
+`
+
+const Companies = ({name, logo}) => {
     return(
-        <BoxCompanies>
-            <img src="https://pbs.twimg.com/profile_images/1309150586210865165/1K9ybwFH_400x400.jpg" alt="" />
-            <p>Nombre de la empresa</p>
-        </BoxCompanies>
+        <Wrap>
+            <BoxCompanies>
+                <ImgCompanies>
+                    <img src={logo} alt="..." />
+                </ImgCompanies>
+                <TitleCompanies>{name}</TitleCompanies>
+            </BoxCompanies>
+        </Wrap>
     )
 };
 
