@@ -59,7 +59,7 @@ const saveOne = async (req: Request, res: Response) => { // En /api/companies co
     }
 }
 
-const getAll = async (req: Request, res: Response) => { // En /api/companies con el método GET se pueden traer todas las empresas
+const getAll = async (req: Request, res: Response) => { // /api/companies:page con el método GET
     try {
         const { page } = req.params
         const { bigdata, cloud, testing, softwarepropio, softwarepropioverticales, softwareterceros, softwaretercerosverticales, asesoriait, mantenimiento, actividadesexterior, capacitacion, consultoria } = req.query
@@ -84,8 +84,12 @@ const getAll = async (req: Request, res: Response) => { // En /api/companies con
             page_ = parseInt(page)
         }
 
-        const response = await container.getAll(page_, filters)
-        return res.status(200).send({ status: "success", payload: response })        
+        const elements_per_page = 10
+        const total_count = await container.count(filters)
+        const total_pages = Math.ceil(total_count / elements_per_page)
+
+        const response = await container.getAll(page_, filters, elements_per_page)
+        return res.status(200).send({ status: "success", payload: response, total_pages })        
     } catch (error) {
         req.logger.fatal(`${req.infoPeticion} | ${error}`)
         return res.status(500).send({ status: "error", error: error })        

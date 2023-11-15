@@ -138,7 +138,8 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
   ```js
   {
       status: "success",
-      payload: [/* Array de empresas */]
+      payload: [/* Array de empresas */],
+      total_pages: /* Número entero representando la cantidad máxima de páginas disponibles según el filtro especificado */
   }
   ```
 
