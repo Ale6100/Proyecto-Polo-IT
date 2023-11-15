@@ -1,4 +1,64 @@
+.container__detail-father{
+    background: rgb(182,25,25);
+    background: linear-gradient(90deg, rgba(182,25,25,1) 0%, rgba(208,32,32,1) 36%, rgb(72, 62, 249) 72%); 
+}
 .container__detail-card{
-    background: linear-gradient(90deg, rgba(138,11,11,1) 0%, rgba(208,32,32,1) 36%, rgba(29,20,201,1) 68%);
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 20px;
     height: 80vh;
+    margin-top: 9px;
+}
+.container__info{
+    /* background-color: blue; */
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.container__img-logo{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+} 
+.container__img-logo .image-logo{
+    width: 200px;
+    border-radius: 12px;
+}
+.title-company{
+    color: blue;
+    text-align: center;
+    font-weight: 700;
+    font-size:32px;
+
+}
+.container__btn{
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+    /* width: 100%; */
+    padding: 10px 0;
+}
+.btn{
+    border: 0;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    background-color: brown;
+    color: black;
+    width: 30%;
+}
+.container__redes{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px   ;
+}
+.container__redes li{
+    list-style-type: none;
+}
+
+.container__redes .image-red{
+    width: 50px;
+    color: white;
 }
