@@ -40,12 +40,12 @@ const Footer = () => {
             </Wrap>
             <Wrap>
                 <FooterLink>
-                    <li><a href="https://www.facebook.com/poloitbuenosaires/"><img src="../src/../public/img/social-media/icons8-facebook-32.png" alt="" /></a></li>
-                    <li><a href="https://www.instagram.com/poloitbuenosaires/"><img src="../src/../public/img/social-media/icons8-instagram-32.png" alt="" /></a></li>
-                    <li><a href="https://www.linkedin.com/company/polo-it-de-buenos-aires/"><img src="../src/../public/img/social-media/icons8-linkedin-32.png" alt="" /></a></li>
-                    <li><a href="https://twitter.com/PoloITBsAs"><img src="../src/../public/img/social-media/icons8-twitter-32.png" alt="" /></a></li>
-                    <li><a href="https://www.youtube.com/channel/UCt0AmOQHBXyYIMXMviCvX5g/featured"><img src="../src/../public/img/social-media/icons8-youtube-32.png" alt="" /></a></li>
-                    <li><a href="https://twitter.com/PoloITBsAs"><img src="../src/../public/img/social-media/icons8-whatsapp-32.png" alt="" /></a></li>
+                    <li><a href="https://www.facebook.com/poloitbuenosaires/"><img src="img/social-media/icons8-facebook-32.png" alt="" /></a></li>
+                    <li><a href="https://www.instagram.com/poloitbuenosaires/"><img src="img/social-media/icons8-instagram-32.png" alt="" /></a></li>
+                    <li><a href="https://www.linkedin.com/company/polo-it-de-buenos-aires/"><img src="img/social-media/icons8-linkedin-32.png" alt="" /></a></li>
+                    <li><a href="https://twitter.com/PoloITBsAs"><img src="img/social-media/icons8-twitter-32.png" alt="" /></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCt0AmOQHBXyYIMXMviCvX5g/featured"><img src="img/social-media/icons8-youtube-32.png" alt="" /></a></li>
+                    <li><a href="https://twitter.com/PoloITBsAs"><img src="img/social-media/icons8-whatsapp-32.png" alt="" /></a></li>
                 </FooterLink>
             </Wrap>
             <Wrap>
