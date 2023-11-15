@@ -5,7 +5,7 @@
     background-color: #f5f5f5;
     justify-content:space-around;
     padding: 15px;
-    box-shadow: 0 10px 5px #a8a4a4;
+    /* box-shadow: 0 10px 5px #a8a4a4; */
     /* align-items: center; */
     position: relative;
 }
@@ -35,6 +35,9 @@
 }
 .logo-nav{
     height: 45px;
+}
+.active{
+    border-bottom-color: #3164c2;
 }
 @media screen and (max-width:767px){
     .menu-nav{
