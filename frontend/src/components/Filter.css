@@ -1,0 +1,61 @@
+.container-filter {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    text-align: center;
+}
+
+.container-filter > h2 {
+    padding: 4px;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.container-filter > form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    border-top: 0px;
+}
+
+.container-divs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    border-left: 0px;
+    border-right: 0px;
+}
+
+.container-divs > h4 {
+    text-decoration: underline;
+}
+
+.container-divs > div {
+    padding-right: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(200, 200, 200)
+}
+
+.container-divs > div > p {
+    flex: 1;
+}
+
+.container-divInputs {
+    text-align: start;
+}
+
+.container-divs > div > p {
+    margin-bottom: 5px;
+}
+
+.container-divInputs > div > input {
+    margin-right: 10px;
+}
+
+.container-filter > form > button {
+    cursor: pointer;
+}
