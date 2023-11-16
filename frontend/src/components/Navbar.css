@@ -8,10 +8,6 @@
     position: relative;
 }
 
-.menu-burger {
-    display: none;
-}
-
 .logo-nav {
     height: 45px;
 }
@@ -20,6 +16,7 @@
     width: 30px;
     height: 30px;
     cursor: pointer;
+    display: none;
 }
 
 .menu-nav {
@@ -28,7 +25,7 @@
     justify-content: center;
     gap: 60px;
     font-size: 18px;
-    transition: all 0.2s;
+    transition: all 0.4s;
     background-color: #f5f5f5;
 }
 
@@ -41,7 +38,7 @@
 }
 
 .menu-nav a.active {
-    border-bottom: 3px solid red;
+    border-bottom: 3px solid #3164c2;
 }
 
 .menu-nav a:hover {
@@ -66,6 +63,10 @@
         width: 100%;
         left: 0;
         height: 200px;
+    }
+
+    .menu-burger > img {
+        display: inline-block;
     }
 }
 

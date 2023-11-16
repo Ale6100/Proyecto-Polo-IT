@@ -21,13 +21,12 @@ const Categories = () => {
     return(
         <Wrap>
             <Box>
-                <h1>Filtros</h1>
+                <h2>Filtros</h2>
 
                 <Filters>
-                    <h2>Análisis de Datos</h2>
+                    <h3>Análisis de Datos</h3>
                     <Buttom></Buttom>
                 </Filters>
-
             </Box>
         </Wrap>
     )
