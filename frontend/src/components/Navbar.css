@@ -6,6 +6,7 @@
     justify-content:space-around;
     padding: 15px;
     position: relative;
+    box-shadow:0 0 2px 6px  #c5c5c5;
 }
 
 .logo-nav {
