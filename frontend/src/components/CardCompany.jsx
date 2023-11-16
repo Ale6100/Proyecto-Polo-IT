@@ -36,7 +36,7 @@ const CardCompanie = () => {
                     </div>
                 </div>
                 <div className='container__video'>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/xD5zPGo-SQw?si=GbCIFjp2N15HP4nE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/xD5zPGo-SQw?si=GbCIFjp2N15HP4nE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen className='video-iframe'></iframe>
                 </div>      
             </div>
         </div>
