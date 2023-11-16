@@ -9,6 +9,12 @@
     cursor: pointer;
 }
 
+.container-search > button.btnActive {
+    background-color: #043b7f;
+    color: white;
+    border: 0px
+}
+
 .container-companies {
     display: grid;
     grid-template-columns: 1fr 1fr;
