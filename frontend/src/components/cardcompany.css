@@ -1,21 +1,32 @@
 .container__detail-father{
-    background: rgb(182,25,25);
-    background: linear-gradient(90deg, rgba(182,25,25,1) 0%, rgba(208,32,32,1) 36%, rgb(72, 62, 249) 72%); 
+    padding: 30px;
 }
 .container__detail-card{
     display: flex;
     justify-content: space-between;
     gap: 10px;
     padding: 20px;
-    height: 80vh;
     margin-top: 9px;
 }
 .container__info{
-    /* background-color: blue; */
-    color: aliceblue;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
+}
+.container__info-services{
+    color: #414141;
+    font-weight: 500;
+    font-size: 16px;
+}
+.title__info-services{
+    color: #043b7f;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 5px;
+}
+.box-email li{
+    margin-left: 15px;
 }
 .container__img-logo{
     display: flex;
@@ -25,40 +36,71 @@
 .container__img-logo .image-logo{
     width: 200px;
     border-radius: 12px;
+    border: 2px solid #C51731;
 }
 .title-company{
-    color: blue;
+    color: #C51731;
     text-align: center;
     font-weight: 700;
     font-size:32px;
-
+    padding-bottom: 8px;
+    border-bottom: 2px solid #C51731;
 }
 .container__btn{
     display: flex;
     justify-content: space-around;
     padding: 5px;
-    /* width: 100%; */
     padding: 10px 0;
 }
 .btn{
     border: 0;
-    padding: 6px 10px;
+    padding: 8px 10px;
     border-radius: 8px;
     font-weight: 600;
-    background-color: brown;
-    color: black;
+    color: #fff;
+    text-transform: uppercase;
     width: 30%;
+}
+.contact-btn{
+    background-color: #043b7f;
+}
+.web-btn{
+    background-color: #C51731;
+}
+.web-btn:hover, .contact-btn:hover{
+    background-color: rgb(231, 132, 132);
+    color: #000;
 }
 .container__redes{
     display: flex;
     justify-content: space-evenly;
-    gap: 10px   ;
+    gap: 20px;
 }
 .container__redes li{
     list-style-type: none;
 }
-
-.container__redes .image-red{
-    width: 50px;
-    color: white;
+.icons-red{
+    width: 40px;
+    height: 40px;
+    color: #043b7f;
+}
+.icons-you:hover{
+    color: #ff0000;
+    border: 2px solid #ff0000;
+}
+.icons-face:hover{
+    color: #0000ff;
+    border: 2px solid #0000ff;
+}
+.icons-insta:hover{
+    color: #de23a3;
+    border: 2px solid #de23a3;
+}
+.icons-x:hover{
+    color: #000;
+    border: 2px solid #000;
+}
+.icons-link:hover{
+    color: #0d0dbb;
+    border: 2px solid #0d0dbb;
 }
