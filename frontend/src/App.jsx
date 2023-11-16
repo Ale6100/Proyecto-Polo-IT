@@ -7,18 +7,17 @@ import Footer from './components/Footer';
 import CardCompany from './components/CardCompany';
 
 function App() {
-
-  return (
-    <BrowserRouter>
-      <Navbar/>
-      <Routes>
-        <Route path='/' element={<Home/>} />
-        <Route path='/detail' element={<CardCompany/>} />
-        <Route path="*" element={<Error404 />} />
-      </Routes>
-      <Footer/>
-    </BrowserRouter>
-  )
+    return (
+        <BrowserRouter>
+        <Navbar/>
+        <Routes>
+            <Route path='/' element={<Home/>} />
+            <Route path='/detail' element={<CardCompany/>} />
+            <Route path="*" element={<Error404 />} />
+        </Routes>
+        <Footer/>
+        </BrowserRouter>
+    )
 }
 
 export default App
