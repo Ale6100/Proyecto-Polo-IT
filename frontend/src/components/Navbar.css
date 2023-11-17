@@ -65,6 +65,7 @@
         width: 100%;
         left: 0;
         height: 200px;
+        z-index: 100;
     }
 
     .menu-burger > img {
