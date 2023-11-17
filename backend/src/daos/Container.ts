@@ -1,5 +1,5 @@
 import companyModel from "./models/companies.js"
-import { CompanyType, OptionalCompanyType } from "../types/company.js"
+import { CompanyType, FiltersType, OptionalCompanyType } from "../types/company.js"
 
 // Esta clase crea un objeto que manipula una colección en MongoDB con documentos dentro. Dichos documentos pueden ser agregados, modificados, borrados y consultados
 
@@ -15,9 +15,13 @@ class Container {
         return save_._id.valueOf()
     }
     
-    async getAll() { // Devuelve un array con todos los documentos presentes en la colección
-        return await this.model.find({})
+    async getAll(page: number, filter: FiltersType, elements_per_page: 10) { // Devuelve un array con todos los documentos presentes en la colección, de acuerdo a la página actual
+        return await this.model.find(filter).skip(elements_per_page*(page-1)).limit(elements_per_page)
     }
+
+    async count(filter: FiltersType) { // Devuelve el número total de documentos que cumplen con los filtros
+        return await this.model.countDocuments(filter)
+    }    
 
     async updateById(id: string, documentoActualizado: OptionalCompanyType) { // Actualiza un documento de la colección según su id
         await this.model.updateOne({_id: id}, {$set: {...documentoActualizado}})

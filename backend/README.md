@@ -123,10 +123,14 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
 
 ### 2. **Manejo de empresas** 
 
-* En la ruta `/api/companies` con el método `GET`, puedes obtener todas las empresas de la base de datos.
+* En la ruta `/api/companies/:page` con el método `GET` puedes obtener la página `page` de la lista de empresas de la base de datos.
 
   #### 2.1. Solicitud
-  No es necesario enviar ningún dato especial en la solicitud.
+  La solicitud está en la propia url:
+
+  * `page` (string): La página a solicitar. Actualmente cada página tiene un máximo de 10 elementos. El valor predeterminado es 1.
+
+  * En los query parameters se colocan todos los filtros que desees aplicar sobre la lista de empresas a obtener. Los filtros son aquellas propiedades booleanas que se muestran en la sección 2.3. Todos aquellos filtros que no se pasen, no se considerarán. Por ejemplo `/api/companies/2?bigdata=true&cloud=false` trae la segunda página de la lista de todas las empresas cuya propiedad bigdata y cloud son true y false respectivamente.
 
   #### 2.2. Respuesta
   Si la petición se resuelve, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
@@ -134,7 +138,8 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
   ```js
   {
       status: "success",
-      payload: [/* Array de empresas */]
+      payload: [/* Array de empresas */],
+      total_pages: /* Número entero representando la cantidad máxima de páginas disponibles según el filtro especificado */
   }
   ```
 
@@ -154,13 +159,12 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
 
   * `name` (string): Nombre de la empresa
   * `info` (string): Información general
-  * `logo` (string): Logo
-  * `video` (string): Video de presentación
-  * `linksSocialNetworks` (array): Es un array de objetos. Cada objeto debe tener el campo `name` y `url` de la red social que representa
+  * `logo` (string): Logo. Puede ser un string vacío en caso de que la empresa no posea
+  * `video` (string): Video de presentación. Puede ser un string vacío en caso de que la empresa no posea
   * `website` (string): Página web
-  * `mail` (array): Es un array de strings. Cada uno representa un correo electrónico distinto
-  * `category` (array): Es un array de strings. Representan las categorías generales de la empresa
-  * `productOrService` (array): Es un array de strings. Representan los productos o servicios de la empresa
+  * `mail` (array): Es un array de strings. Cada uno representa un correo electrónico distinto de la empresa
+  * `linksSocialNetworks` (array): Es un array de objetos. Cada objeto debe tener el campo `name` y `url` de la red social que representa
+  * `bigdata`, `cloud`, `testing`, `softwarepropio`, `softwarepropioverticales`, `softwareterceros`, `softwaretercerosverticales`, `asesoriait`, `mantenimiento`, `actividadesexterior`, `capacitacion`, `consultoria` son booleanos, el valor indica si le corresponde o no a la empresa
 
   #### 2.4. Respuesta
   Si la petición se resuelve, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
@@ -203,7 +207,7 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
 * En la ruta `/api/companies/id` con el método `PUT`, puedes actualizar la empresa con el `id` especificado.
 
   #### 2.5. Solicitud
-  En el cuerpo de la solicitud puedes enviar las propiedades que desees actualizar (lee la sección 2.3 para saber cuáles son), por lo tanto ninguna es obligatoria.
+  En el cuerpo de la solicitud debes enviar sólo las propiedades que desees actualizar (lee la sección 2.3 para saber cuáles son), por lo tanto ninguna es obligatoria.
 
   #### 2.6. Respuesta
   Si la petición se resuelve, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:

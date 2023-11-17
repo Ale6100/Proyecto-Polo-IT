@@ -14,22 +14,12 @@ const schema = new mongoose.Schema({ // Estructura que tendrá cada documento
 
     logo: {
         type: String,
-        required: true
+        default: ""
     },
 
     video: {
         type: String,
         default: ""
-    },
-
-    linksSocialNetworks: {
-        type: [
-            {
-                type: Object,
-                required: false
-            }
-        ],
-        required: true,
     },
 
     website: {
@@ -44,26 +34,76 @@ const schema = new mongoose.Schema({ // Estructura que tendrá cada documento
                 required: false
             }
         ],
-        required: false, 
+        required: true, 
     },
 
-    category: {
+    linksSocialNetworks: {
         type: [
             {
-                type: String,
+                type: Object,
                 required: false
             }
         ],
+        required: true,
+    },
+
+    bigdata: {
+        type: Boolean,
         required: true
     },
 
-    productOrService: {
-        type: [
-            {
-                type: String,
-                required: false
-            }
-        ],
+    cloud: {
+        type: Boolean,
+        required: true
+    },
+
+    testing: {
+        type: Boolean,
+        required: true
+    },
+
+    softwarepropio: {
+        type: Boolean,
+        required: true
+    },
+    
+    softwarepropioverticales: {
+        type: Boolean,
+        required: true
+    },
+
+    softwareterceros: {
+        type: Boolean,
+        required: true
+    },
+
+    softwaretercerosverticales: {
+        type: Boolean,
+        required: true
+    },
+
+    asesoriait: {
+        type: Boolean,
+        required: true
+    },
+
+    mantenimiento: {
+        type: Boolean,
+        required: true
+    },
+    
+    actividadesexterior: {
+        type: Boolean,
+        required: true
+    },
+    
+    capacitacion: {
+        type: Boolean,
+        required: true
+    },
+
+    consultoria: {
+        type: Boolean,
         required: true
     }
 })
