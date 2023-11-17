@@ -1,6 +1,5 @@
 import './Home.css';
 import Filter from '../components/Filter';
-// import Companies from '../components/Companies';
 import styled from 'styled-components';
 import CompaniesContanier from '../containers/CompaniesContainer';
 import { useEffect, useState } from 'react';
@@ -19,7 +18,7 @@ const Home = () => {
     const [totalPages, setTotalPages] = useState(0);
 
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_BACKEND_URL}/api/companies/${page}?${queryParams}`, {
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/api/companies/page/${page}?${queryParams}`, {
             headers: {
                 "Authorization": `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}` 
             }
@@ -27,7 +26,7 @@ const Home = () => {
         .then(res => {
             setData(res.payload);
             setTotalPages(res.total_pages);
-        }).finally(() => setLoading(false))
+        }).finally(() => setLoading(false));
     }, [page, queryParams]);
 
     return (

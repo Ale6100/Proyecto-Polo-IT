@@ -123,14 +123,14 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
 
 ### 2. **Manejo de empresas** 
 
-* En la ruta `/api/companies/:page` con el método `GET` puedes obtener la página `page` de la lista de empresas de la base de datos.
+* En la ruta `/api/companies/page/:page` con el método `GET` puedes obtener la página `page` de la lista de empresas de la base de datos.
 
   #### 2.1. Solicitud
   La solicitud está en la propia url:
 
   * `page` (string): La página a solicitar. Actualmente cada página tiene un máximo de 10 elementos. El valor predeterminado es 1.
 
-  * En los query parameters se colocan todos los filtros que desees aplicar sobre la lista de empresas a obtener. Los filtros son aquellas propiedades booleanas que se muestran en la sección 2.3. Todos aquellos filtros que no se pasen, no se considerarán. Por ejemplo `/api/companies/2?bigdata=true&cloud=false` trae la segunda página de la lista de todas las empresas cuya propiedad bigdata y cloud son true y false respectivamente.
+  * En los query parameters se colocan todos los filtros que desees aplicar sobre la lista de empresas a obtener. Los filtros son aquellas propiedades booleanas que se muestran en la sección 2.5. Todos aquellos filtros que no se pasen, no se considerarán. Por ejemplo `/api/companies/2?bigdata=true&cloud=false` trae la segunda página de la lista de todas las empresas cuya propiedad bigdata y cloud son true y false respectivamente.
 
   #### 2.2. Respuesta
   Si la petición se resuelve, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
@@ -152,9 +152,53 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
   }
   ```
 
-* En la ruta `/api/companies` con el método `POST`, puedes agregar una empresa a la base de datos.
+* En la ruta `/api/companies/:id` con el método `GET`, puedes obtener la empresa con el `id` especificado.
 
   #### 2.3. Solicitud
+  La solicitud está en la propia url:
+
+  * `id` (string): El `id` de la empresa a obtener
+
+  #### 2.4. Respuesta
+  Si la petición se resuelve, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
+
+  ```js
+  {
+      status: "success",
+      payload: /* Objeto de la empresa */
+  }
+  ```
+
+  Si el parámetro `id` no es de tipo string, se devuelve una respuesta con el estado 400 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "Parameter id must be a string"
+  }
+  ```
+
+  Si la empresa con el parámetro `id` no existe, se devuelve una respuesta con el estado 404 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "Company not found"
+  }
+  ```
+
+  Si se produce un error interno durante la petición, se devuelve una respuesta con el estado 500 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "X" // El valor X varía según el mensaje de error específico
+  }
+  ```
+
+* En la ruta `/api/companies` con el método `POST`, puedes agregar una empresa a la base de datos.
+
+  #### 2.5. Solicitud
   Asegúrese de incluir los siguientes datos en el cuerpo de la solicitud (body):
 
   * `name` (string): Nombre de la empresa
@@ -166,7 +210,7 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
   * `linksSocialNetworks` (array): Es un array de objetos. Cada objeto debe tener el campo `name` y `url` de la red social que representa
   * `bigdata`, `cloud`, `testing`, `softwarepropio`, `softwarepropioverticales`, `softwareterceros`, `softwaretercerosverticales`, `asesoriait`, `mantenimiento`, `actividadesexterior`, `capacitacion`, `consultoria` son booleanos, el valor indica si le corresponde o no a la empresa
 
-  #### 2.4. Respuesta
+  #### 2.6. Respuesta
   Si la petición se resuelve, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
 
   ```js
@@ -206,10 +250,10 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
 
 * En la ruta `/api/companies/id` con el método `PUT`, puedes actualizar la empresa con el `id` especificado.
 
-  #### 2.5. Solicitud
-  En el cuerpo de la solicitud debes enviar sólo las propiedades que desees actualizar (lee la sección 2.3 para saber cuáles son), por lo tanto ninguna es obligatoria.
+  #### 2.7. Solicitud
+  En el cuerpo de la solicitud debes enviar sólo las propiedades que desees actualizar (lee la sección 2.5 para saber cuáles son), por lo tanto ninguna es obligatoria.
 
-  #### 2.6. Respuesta
+  #### 2.8. Respuesta
   Si la petición se resuelve, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
 
   ```js
@@ -248,10 +292,10 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
 
 * En la ruta `/api/companies/id` con el método `DELETE`, puedes eliminar la empresa con el `id` especificado.
 
-  #### 2.7. Solicitud
+  #### 2.9. Solicitud
   No es necesario enviar ninguna información en el cuerpo de la solicitud.
 
-  #### 2.8. Respuesta
+  #### 2.10. Respuesta
   Si la petición se resuelve, se devuelve una respuesta con el estado 200 y el siguiente cuerpo:
 
   ```js
