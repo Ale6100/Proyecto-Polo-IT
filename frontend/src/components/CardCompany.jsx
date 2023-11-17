@@ -14,8 +14,6 @@ const CardCompany = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log("id", id);
-
         fetch(`${import.meta.env.VITE_BACKEND_URL}/api/companies/${id}`, {
             headers: {
                 "Authorization": `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}` 
@@ -24,7 +22,6 @@ const CardCompany = () => {
         .then(res => {
             if (res.status === "success") {
                 setCompany(res.payload);
-                console.log("company", res.payload);
             } else {
                 navigate("/");
             }
