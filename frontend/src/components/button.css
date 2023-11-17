@@ -1,0 +1,23 @@
+.style-default-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.style-default{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: #C51731;
+}
+.style-default:hover{
+    background-color: rgb(231, 132, 132);
+    color: #000;
+}
