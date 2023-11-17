@@ -1,16 +1,8 @@
 import "./CompaniesContainer.css"
 import Company from "../components/Company";
+import Loader from "../components/Loader";
 
 const CompaniesContanier = ({ loading, data, totalPages, page, setPage }) => {
-    const Loader = () => {
-        return (
-        <div className="container-loader">
-            <div className="cube-loader"><div className="cube__inner-loader"></div></div>
-            <div className="cube-loader"><div className="cube__inner-loader"></div></div>
-            <div className="cube-loader"><div className="cube__inner-loader"></div></div>
-        </div>
-    )}
-
     return (
         <>
             {
