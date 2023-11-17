@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css'
 import Navbar from './components/Navbar'
-import Home from './pages/Home'
+import PageCompany from './pages/PageCompany'
 import Error404 from './pages/Error404';
 import Footer from './components/Footer';
 import CardCompany from './components/CardCompany';
@@ -15,7 +15,7 @@ function App() {
             <Navbar/>
             <Routes>
                 <Route path='/' element={<Inicio/>}/>
-                <Route path='/company' element={<Home />} />
+                <Route path='/company/:page' element={<PageCompany />} />
                 <Route path='/detail/:id' element={<CardCompany />} />
                 <Route path='/contact' element={<Contact />} />
                 <Route path='/about' element={<About/>}/>

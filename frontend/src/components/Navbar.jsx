@@ -19,7 +19,7 @@ const Navbar = () => {
             <ul className="menu-nav nav-response" ref={menuRef}>
                 <li><NavLink to='/'>Inicio</NavLink></li>
                 <li><NavLink to='/about'>Nosotros</NavLink></li>
-                <li><NavLink to='/company'>Empresas</NavLink></li>
+                <li><NavLink to='/company/1'>Empresas</NavLink></li>
                 <li><NavLink to='/contact'>Contacto</NavLink></li>
             </ul>
         </nav>

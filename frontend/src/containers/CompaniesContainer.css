@@ -4,15 +4,17 @@
     gap: 10px;
 }
 
-.container-search > button {
+.container-search > a {
     flex: 1;
-    cursor: pointer;
+    background-color: rgb(190, 190, 190);
+    text-align: center;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
 }
 
-.container-search > button.btnActive {
+.container-search > a.active {
     background-color: #043b7f;
     color: white;
-    border: 0px
 }
 
 .container-companies {
