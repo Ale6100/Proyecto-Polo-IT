@@ -56,6 +56,12 @@
     margin-right: 10px;
 }
 
-.container-filter > form > button {
+.filter-container-buttons {
+    display: flex;
+}
+
+.filter-container-buttons > button {
     cursor: pointer;
+    flex: 1;
+    height: 30px;
 }

@@ -1,21 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Filter.css";
 
+const estructuraFormLimpio = {
+    bigdata: "indistinto",
+    cloud: "indistinto",
+    testing: "indistinto",
+    softwarepropio: "indistinto",
+    softwarepropioverticales: "indistinto",
+    softwareterceros: "indistinto",
+    softwaretercerosverticales: "indistinto",
+    asesoriait: "indistinto",
+    mantenimiento: "indistinto",
+    actividadesexterior: "indistinto",
+    capacitacion: "indistinto",
+    consultoria: "indistinto"
+}
+
 const Filter = ({ setQueryParams, setPage }) => {
-    const [formValues, setFormValues] = useState({
-        bigdata: "indistinto",
-        cloud: "indistinto",
-        testing: "indistinto",
-        softwarepropio: "indistinto",
-        softwarepropioverticales: "indistinto",
-        softwareterceros: "indistinto",
-        softwaretercerosverticales: "indistinto",
-        asesoriait: "indistinto",
-        mantenimiento: "indistinto",
-        actividadesexterior: "indistinto",
-        capacitacion: "indistinto",
-        consultoria: "indistinto"
-    })
+    const [formValues, setFormValues] = useState(estructuraFormLimpio)
+
+    const [formLimpio, setFormLimpio] = useState(true);
+
+    useEffect(() => {
+        if (JSON.stringify(formValues) === JSON.stringify(estructuraFormLimpio)) {
+            setFormLimpio(true);
+        } else {
+            setFormLimpio(false);
+        }
+    }, [formValues]);
 
     const filtrar = e => {
         e.preventDefault();
@@ -60,6 +72,12 @@ const Filter = ({ setQueryParams, setPage }) => {
                 </div>
             </div>            
         )
+    }
+
+    const limpiar = () => {
+        setFormValues(estructuraFormLimpio);
+        setPage(1);
+        setQueryParams("");
     }
 
     return (
@@ -113,7 +131,12 @@ const Filter = ({ setQueryParams, setPage }) => {
                     <CrearRadio p={"Consultoría"} name={"consultoria"} />
                 </div>                
 
-                <button type="submit">Filtrar</button>
+                <div className="filter-container-buttons">
+                    <button type="submit">Filtrar</button>
+                    {
+                        formLimpio || <button onClick={limpiar} type="reset">Limpiar</button>
+                    }
+                </div>
             </form>
         </section>
     )
