@@ -8,7 +8,10 @@ const CardCompanie = () => {
 
     return (
         <div className='container__detail-father'>
-            <h2 className='title-company'>Titulo de la empresa</h2>
+            <div className='container__title-company'>
+                <h2 className='title-company'>Titulo de la empresa</h2>
+                <img src="https://enciclopediaeconomica.com/wp-content/uploads/2018/09/muestra-estadistica-icono.jpg" alt="logo de la empresa" className='image-logo-title' />
+            </div>
             <div className='container__detail-card'>
                 <div className='container__info'>
                     <div className='container__img-logo'>
@@ -32,7 +35,7 @@ const CardCompanie = () => {
                     </div>
                     <div className='container__btn'>
                         <button className='btn contact-btn'>Contactar</button>
-                        <button className='btn web-btn'>visitar sitio web</button>
+                        <button className='btn web-btn'>visitar web</button>
                     </div>
                 </div>
                 <div className='container__video'>
