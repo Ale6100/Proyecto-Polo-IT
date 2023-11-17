@@ -12,8 +12,8 @@ function App() {
         <BrowserRouter>
         <Navbar/>
         <Routes>
-            <Route path='/' element={<Home/>} />
-            <Route path='/detail' element={<CardCompany/>} />
+            <Route path='/' element={<Home />} />
+            <Route path='/detail/:id' element={<CardCompany />} />
             <Route path='/contact' element={<Contact />} />
             <Route path="*" element={<Error404 />} />
         </Routes>

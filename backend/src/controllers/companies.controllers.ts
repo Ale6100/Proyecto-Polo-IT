@@ -59,7 +59,7 @@ const saveOne = async (req: Request, res: Response) => { // En /api/companies co
     }
 }
 
-const getAll = async (req: Request, res: Response) => { // /api/companies:page con el método GET
+const getPage = async (req: Request, res: Response) => { // /api/companies/page/:page con el método GET
     try {
         const { page } = req.params
         const { bigdata, cloud, testing, softwarepropio, softwarepropioverticales, softwareterceros, softwaretercerosverticales, asesoriait, mantenimiento, actividadesexterior, capacitacion, consultoria } = req.query
@@ -88,8 +88,31 @@ const getAll = async (req: Request, res: Response) => { // /api/companies:page c
         const total_count = await container.count(filters)
         const total_pages = Math.ceil(total_count / elements_per_page)
 
-        const response = await container.getAll(page_, filters, elements_per_page)
+        const response = await container.getPage(page_, filters, elements_per_page)
         return res.status(200).send({ status: "success", payload: response, total_pages })        
+    } catch (error) {
+        req.logger.fatal(`${req.infoPeticion} | ${error}`)
+        return res.status(500).send({ status: "error", error: error })        
+    }
+}
+
+const getById = async (req: Request, res: Response ) => { // En /api/companies/id con el método GET se obtiene una empresa por su id
+    try {
+        const { id } = req.params
+
+        if (typeof id !== "string") {
+            req.logger.error("Parameter id must be a string")
+            return res.status(400).send({ status: "error", error: "Parameter id must be a string" })
+        }
+
+        const response = await container.getById(id)
+
+        if (!response) {
+            req.logger.error(`${req.infoPeticion} | Company not found`)
+            return res.status(404).send({ status: "error", error: "Company not found" })
+        }
+
+        return res.status(200).send({ status: "success", payload: response })
     } catch (error) {
         req.logger.fatal(`${req.infoPeticion} | ${error}`)
         return res.status(500).send({ status: "error", error: error })        
@@ -188,7 +211,8 @@ const deleteById = async (req: Request, res: Response) => { // En /api/companies
 
 export default {
     saveOne,
-    getAll,
+    getPage,
+    getById,
     updateById,
     deleteById
 }

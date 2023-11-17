@@ -15,8 +15,12 @@ class Container {
         return save_._id.valueOf()
     }
     
-    async getAll(page: number, filter: FiltersType, elements_per_page: 10) { // Devuelve un array con todos los documentos presentes en la colección, de acuerdo a la página actual
+    async getPage(page: number, filter: FiltersType, elements_per_page: 10) { // Devuelve un array con todos los documentos presentes en la colección, de acuerdo a la página actual
         return await this.model.find(filter).skip(elements_per_page*(page-1)).limit(elements_per_page)
+    }
+
+    async getById(id: string) { // Devuelve un documento de la colección
+        return await this.model.findById(id)
     }
 
     async count(filter: FiltersType) { // Devuelve el número total de documentos que cumplen con los filtros

@@ -59,6 +59,7 @@
     font-weight: 600;
     color: #fff;
     text-transform: uppercase;
+    text-decoration: none;
     width: 30%;
 }
 .contact-btn{
@@ -67,6 +68,7 @@
 .web-btn{
     background-color: #C51731;
 }
+
 .web-btn:hover, .contact-btn:hover{
     background-color: rgb(231, 132, 132);
     color: #000;
