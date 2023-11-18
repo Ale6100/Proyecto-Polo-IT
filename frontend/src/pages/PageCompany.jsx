@@ -1,21 +1,15 @@
 import './pageCompany.css';
 import Filter from '../components/Filter';
-import styled from 'styled-components';
 import CompaniesContanier from '../containers/CompaniesContainer';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
-const Wrap = styled.div`
-    display: flex;
-    justify-content: space-evenly;
-    margin: 20px 0px;
-`
 
 const PageCompany = () => {
     const [queryParams, setQueryParams] = useState("");
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [totalPages, setTotalPages] = useState(0);
+    const [filterVisible, setFilterVisible] = useState(false);
     const { page } = useParams()
 
     useEffect(() => {
@@ -31,10 +25,13 @@ const PageCompany = () => {
     }, [page, queryParams]);
 
     return (
-        <Wrap>
-            <Filter setQueryParams={setQueryParams} />
-            <CompaniesContanier loading={loading} data={data} totalPages={totalPages} page={page} />
-        </Wrap>
+        <div className='pageCompany-div' >
+            <img onClick={() => setFilterVisible(!filterVisible)} className={`pageCompany-img ${filterVisible ? 'filter-visible' : ''}`} src="./img/configuration.svg" alt="" />
+            <section className='pageCompany-section'>
+                <Filter setQueryParams={setQueryParams} filterVisible={filterVisible} />
+                <CompaniesContanier loading={loading} data={data} totalPages={totalPages} page={page} />
+            </section>
+        </div>
     );
 }
     

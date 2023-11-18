@@ -17,7 +17,7 @@ const estructuraFormLimpio = {
     consultoria: "indistinto"
 }
 
-const Filter = ({ setQueryParams }) => {
+const Filter = ({ setQueryParams, filterVisible }) => {
     const [formValues, setFormValues] = useState(estructuraFormLimpio)
 
     const [formLimpio, setFormLimpio] = useState(true);
@@ -59,7 +59,6 @@ const Filter = ({ setQueryParams }) => {
 
     const limpiar = () => {
         setFormValues(estructuraFormLimpio);
-        // setPage(1);
         navigate(`/company/1`);
         setQueryParams("");
     }
@@ -78,13 +77,13 @@ const Filter = ({ setQueryParams }) => {
                 query += `&${key}=${value}`;
             }
         }
-        // setPage(1);
+
         navigate(`/company/1`);
         setQueryParams(query);        
     }
 
     return (
-        <section className="container-filter">
+        <section className={`container-filter ${filterVisible ? "filter-visible" : ""}`}>
             <h2>Categorías</h2>
                 
             <form onChange={changeFilter}>
