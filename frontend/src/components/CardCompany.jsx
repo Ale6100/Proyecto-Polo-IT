@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './cardcompany.css';
-import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube, FaWhatsapp  } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { useNavigate, useParams } from 'react-router-dom';
 import Loader from './Loader';
@@ -176,18 +176,19 @@ const CardCompany = () => {
                 <div className='container__info'>
                     <div className='container__img-logo'>
                     <img src={company.logo.includes("http") ? company.logo : `/img/logo/${company.logo}`} alt={`Logo de ${company.name}`} className='image-logo' />
-                        <div className='container__redes'>
+                        <div className={`container__redes ${company.linksSocialNetworks.length >= 4 ? "smallGap" : ""}`}>
                             
                             {
                                 company.linksSocialNetworks.map((obj) => (
                                     <li key={obj.name}>
                                         <a href={obj.url}>
                                             {
-                                                obj.name === "facebook" ? <FaFacebook className='icons-red icons-face'/> :
-                                                obj.name === "instagram" ? <FaInstagram className='icons-red icons-insta'/> :
-                                                obj.name === "linkedin" ? <FaLinkedin className='icons-red icons-link'/> :
-                                                obj.name === "x" ? <FaXTwitter className='icons-red icons-x'/> :
-                                                obj.name === "youtube" ? <FaYoutube className='icons-red icons-you'/> :
+                                                obj.name === "facebook" ? <FaFacebook className={`icons-red icons-face ${company.linksSocialNetworks.length >= 4 ? "smallIcon" : ""}`}/> :
+                                                obj.name === "instagram" ? <FaInstagram className={`icons-red icons-insta ${company.linksSocialNetworks.length >= 4 ? "smallIcon" : ""}`}/> :
+                                                obj.name === "linkedin" ? <FaLinkedin className={`icons-red icons-link ${company.linksSocialNetworks.length >= 4 ? "smallIcon" : ""}`}/> :
+                                                obj.name === "x" ? <FaXTwitter className={`icons-red icons-x ${company.linksSocialNetworks.length >= 4 ? "smallIcon" : ""}`}/> :
+                                                obj.name === "youtube" ? <FaYoutube className={`icons-red icons-you ${company.linksSocialNetworks.length >= 4 ? "smallIcon" : ""}`}/> :
+                                                obj.name === "whatsapp" ? <FaWhatsapp className={`icons-red icons-wsp ${company.linksSocialNetworks.length >= 4 ? "smallIcon" : ""}`}/> :
                                                 "ERROR, verificar el nombre de la red social"
                                             }
                                         </a>
@@ -216,7 +217,7 @@ const CardCompany = () => {
 
                 <div className='container__video'>
                     {
-                        company.video ? <iframe width="560" height="315" src={`https://www.youtube.com/embed/${company.video}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen className='video-iframe'></iframe> :
+                        company.video ? <iframe src={`https://www.youtube.com/embed/${company.video}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen className='video-iframe'></iframe> :
                         <img className='video-iframe' src="./img/videoNoDisponible.webp" alt="Video no disponible" />
                     }
                 </div>      
