@@ -1,8 +1,9 @@
-import './Home.css';
+import './pageCompany.css';
 import Filter from '../components/Filter';
 import styled from 'styled-components';
 import CompaniesContanier from '../containers/CompaniesContainer';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const Wrap = styled.div`
     display: flex;
@@ -10,12 +11,12 @@ const Wrap = styled.div`
     margin: 20px 0px;
 `
 
-const Home = () => {
-    const [page, setPage] = useState(1);
+const PageCompany = () => {
     const [queryParams, setQueryParams] = useState("");
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [totalPages, setTotalPages] = useState(0);
+    const { page } = useParams()
 
     useEffect(() => {
         fetch(`${import.meta.env.VITE_BACKEND_URL}/api/companies/page/${page}?${queryParams}`, {
@@ -31,10 +32,10 @@ const Home = () => {
 
     return (
         <Wrap>
-            <Filter setQueryParams={setQueryParams} setPage={setPage} />
-            <CompaniesContanier loading={loading} data={data} totalPages={totalPages} page={page} setPage={setPage} />
+            <Filter setQueryParams={setQueryParams} />
+            <CompaniesContanier loading={loading} data={data} totalPages={totalPages} page={page} />
         </Wrap>
     );
 }
     
-export default Home;
+export default PageCompany;

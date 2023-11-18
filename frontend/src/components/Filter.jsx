@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Filter.css";
+import { useNavigate } from "react-router-dom";
 
 const estructuraFormLimpio = {
     bigdata: "indistinto",
@@ -16,10 +17,12 @@ const estructuraFormLimpio = {
     consultoria: "indistinto"
 }
 
-const Filter = ({ setQueryParams, setPage }) => {
+const Filter = ({ setQueryParams }) => {
     const [formValues, setFormValues] = useState(estructuraFormLimpio)
 
     const [formLimpio, setFormLimpio] = useState(true);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (JSON.stringify(formValues) === JSON.stringify(estructuraFormLimpio)) {
@@ -56,7 +59,8 @@ const Filter = ({ setQueryParams, setPage }) => {
 
     const limpiar = () => {
         setFormValues(estructuraFormLimpio);
-        setPage(1);
+        // setPage(1);
+        navigate(`/company/1`);
         setQueryParams("");
     }
 
@@ -74,7 +78,8 @@ const Filter = ({ setQueryParams, setPage }) => {
                 query += `&${key}=${value}`;
             }
         }
-        setPage(1);
+        // setPage(1);
+        navigate(`/company/1`);
         setQueryParams(query);        
     }
 
