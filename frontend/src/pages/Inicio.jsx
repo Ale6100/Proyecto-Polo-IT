@@ -4,9 +4,15 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Autoplay, Pagination} from 'swiper/modules';
+import { useEffect } from 'react';
 
 
 const Inicio = () => {
+
+    useEffect(() => {
+        document.title = "Polo IT - Inicio";
+    }, [])
+
     return (
         <section className='section__home-container'>
             <Swiper

@@ -13,6 +13,10 @@ const PageCompany = () => {
     const { page } = useParams()
 
     useEffect(() => {
+        document.title = "Polo IT - Empresas";
+    }, [])
+
+    useEffect(() => {
         fetch(`${import.meta.env.VITE_BACKEND_URL}/api/companies/page/${page}?${queryParams}`, {
             headers: {
                 "Authorization": `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}` 
