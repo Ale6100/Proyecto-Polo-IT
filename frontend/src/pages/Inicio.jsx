@@ -1,4 +1,3 @@
-import React from 'react';
 import './inicio.css';
 import Button from '../components/Button';
 import { Swiper, SwiperSlide } from 'swiper/react';

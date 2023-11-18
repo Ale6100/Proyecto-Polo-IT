@@ -3,6 +3,7 @@
     flex-direction: column;
     width: 300px;
     text-align: center;
+    transition: all 0.4s;
 }
 
 .container-filter > h2 {
@@ -64,4 +65,15 @@
     cursor: pointer;
     flex: 1;
     height: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    .container-filter {
+        position: absolute;
+        left: -100vw;
+    }
+}
+
+.filter-visible {
+    left: 0vw;
 }

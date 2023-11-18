@@ -16,7 +16,7 @@ const Navbar = () => {
                 <img onClick={toggler} src="https://img.icons8.com/ios/30/menu--v1.png" alt="menu--v1"/>
             </span>
             
-            <ul className="menu-nav nav-response" ref={menuRef}>
+            <ul className="menu-nav nav-response nav-visible" ref={menuRef}>
                 <li><NavLink to='/'>Inicio</NavLink></li>
                 <li><NavLink to='/about'>Nosotros</NavLink></li>
                 <li><NavLink to='/company/1'>Empresas</NavLink></li>
