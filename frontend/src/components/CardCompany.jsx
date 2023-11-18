@@ -4,6 +4,8 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { useNavigate, useParams } from 'react-router-dom';
 import Loader from './Loader';
+import Swal from 'sweetalert2';
+import disabledButton from '../assets/disabledButton';
 
 const CardCompany = () => {
     const { id } = useParams() // Devuelve el id que viene en la url 
@@ -32,7 +34,136 @@ const CardCompany = () => {
         return null
 
     } else if (loading) {
-        return <Loader />
+        return (
+        <div className='container__detail-loader'>
+            <Loader />
+        </div>
+        )
+    }
+
+    const openFormContact = async (e) => {
+        if (!company.mail[0]) {
+            return Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Este sitio no tiene correo de contacto',
+            })
+        }
+
+        const response = await Swal.fire({
+            title: 'Escriba su correo',
+            html: `
+            <div class="sweet-alert-custom">
+                <div>
+                    <label for="swal-inputName" class="swal2-label">Nombre</label>
+                    <input id="swal-inputName" class="swal2-input">
+                </div>
+                
+                <div>
+                    <label for="swal-inputEmail" class="swal2-label">Email</label>
+                    <input id="swal-inputEmail" class="swal2-input" type="email">
+                </div>
+                
+                 <div>
+                    <label for="swal-inputPhone" class="swal2-label">Teléfono</label>
+                    <input id="swal-inputPhone" class="swal2-input" type="number">
+                </div>
+
+                <div>
+                    <label for="swal-inputMessage" class="swal2-label">Mensaje</label>
+                    <textarea id="swal-inputMessage" class="swal2-textarea"></textarea>
+                </div>                
+            </div>
+            `,
+            preConfirm: () => {
+                const inputName = document.getElementById("swal-inputName");
+                const inputEmail = document.getElementById("swal-inputEmail");
+                const inputPhone = document.getElementById("swal-inputPhone");
+                const inputMessage = document.getElementById("swal-inputMessage");
+
+                if (inputName instanceof HTMLInputElement && inputEmail instanceof HTMLInputElement && inputPhone instanceof HTMLInputElement && inputMessage instanceof HTMLTextAreaElement) {
+                    const name = inputName.value.trim();
+                    const email = inputEmail.value.trim();
+                    const phone = inputPhone.value.trim();
+                    const message = inputMessage.value.trim();
+
+                    if (name && email && message) {
+                        return {
+                            name: name,
+                            email: email,
+                            phone: phone,
+                            message: message
+                        }
+                    }
+                }
+
+                return "";
+            },
+            showCancelButton: true,
+            cancelButtonText: "Cancelar",
+            confirmButtonText: "Enviar",            
+        })
+
+        const value = await response.value
+
+        if (value) {
+            const { name, email, phone, message } = value
+
+            const body = {
+                from: email,
+                to: `alejandro_portaluppi@outlook.com`, // company.mail[0] //! No colocar el mail real por el momento
+                subject: `(Ignorar) - Contacto`,
+                html: `
+                <h2>Por favor, ignore este mail</h2>
+                
+                <p>Este mensaje ha sido enviado desde el botón "CONTACTAR" del detalle de una empresa de <a href="https://proyecto-polo-it.netlify.app/" target="_blank" rel="noopener noreferrer">este</a> sitio web.</p>
+    
+                <p>El sitio se ha desarrollado con propósitos exclusivamente académicos como parte del proyecto "Aceleradora IT". Este proyecto involucra a egresados asociados con diversas empresas educativas, incluida EMPUJAR, a la cual nosotros (Grupo 7) pertenecemos.</p>
+    
+                <p>A continuación se mostrarán los datos introducidos</p>
+    
+                <div>
+                    <p>Nombre: ${name}</p>
+                    <p>Email: ${email}</p>
+                    <p>Teléfono: ${phone || "No propocionado (es el único campo opcional)"}</p>
+                    <p>Mensaje: ${message}</p>
+                </div>
+                `
+            }
+
+            const button = e.target;
+            disabledButton(button, true);
+            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/mail`, {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(body)
+            }).then(res => res.json())
+            disabledButton(button, true);
+
+            if (res.status === "success") {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Enviado',
+                    text: 'Se ha enviado el correo exitósamente',
+                })
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ha ocurrido un error al enviar el correo',
+                })
+            }
+        
+        } else if (!response.isDismissed) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Por favor llena todos los campos',
+            });
+        }
     }
 
     return (
@@ -78,7 +209,7 @@ const CardCompany = () => {
                         }
                     </div>
                     <div className='container__btn'>
-                        <button className='btn contact-btn'>Contactar</button>
+                        <button onClick={openFormContact} className='btn contact-btn'>Contactar</button>
                         <a className='btn web-btn' href={company.website} target="_blank" rel="noopener noreferrer">visitar web</a>
                     </div>
                 </div>
