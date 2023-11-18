@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 const Error404 = () => {
     useEffect(() => {
-        document.title = "Error 404";
+        document.title = "Polo IT - Error 404";
     }, []);
 
     return (

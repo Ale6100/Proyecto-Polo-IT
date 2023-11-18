@@ -5,8 +5,13 @@ import disabledButton from "../assets/disabledButton";
 import { FaWhatsapp, FaMapMarkerAlt } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 import Button from "../components/Button";
+import { useEffect } from "react";
 
 const Contact = () => {
+
+    useEffect(() => {
+        document.title = "Polo IT - Contacto";
+    }, [])
 
     /**
      * Muestra un mensaje exitoso o de error
@@ -41,7 +46,7 @@ const Contact = () => {
 
         if (!name || !email || !message) {
             return sendToast("Por favor, complete los campos requeridos", "error")
-        }    
+        }
 
         const body = {
             from: email,
@@ -54,7 +59,7 @@ const Contact = () => {
 
             <p>El sitio se ha desarrollado con propósitos exclusivamente académicos como parte del proyecto "Aceleradora IT". Este proyecto involucra a egresados asociados con diversas empresas educativas, incluida EMPUJAR, a la cual nosotros (Grupo 7) pertenecemos.</p>
 
-            <p>A continuación se mostrarán los datos introducidos, disculpe las molestias </p>
+            <p>A continuación se mostrarán los datos introducidos</p>
 
             <div>
                 <p>Nombre: ${name}</p>

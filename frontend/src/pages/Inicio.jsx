@@ -5,9 +5,14 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Autoplay, Pagination} from 'swiper/modules';
 import {Link} from 'react-router-dom'
-
+import { useEffect } from 'react';
 
 const Inicio = () => {
+
+    useEffect(() => {
+        document.title = "Polo IT - Inicio";
+    }, [])
+
     return (
         <section className='section__home-container'>
             <Swiper
