@@ -4,8 +4,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Autoplay, Pagination} from 'swiper/modules';
+import {Link} from 'react-router-dom'
 import { useEffect } from 'react';
-
 
 const Inicio = () => {
 
@@ -40,17 +40,17 @@ const Inicio = () => {
                 <div className='main__home-info'>
                     <h2 className='main__home-title'>Nuestro Objetivo</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus natus, quis pariatur aperiam animi sint at. Delectus optio officiis, dolorum deleniti cupiditate veritatis assumenda nisi necessitatibus autem sapiente totam id!</p>
-                    <Button contenido='Conocenos'/>
+                    <Link to='/about' className='link__home'><Button contenido='Conocenos'/></Link>
                 </div>
                 <div className='main__home-info'>
                     <h2 className='main__home-title'>¡Contactar con el Polo IT!</h2>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. At dicta est necessitatibus iusto aliquid fugit, inventore omnis quidem odit beatae suscipit in distinctio quis nemo repellat nesciunt ducimus vero dolore.</p>
-                    <Button contenido='Contactar'/>
+                    <Link to='/contact' className='link__home'><Button contenido='Contactar'/></Link>
                 </div>
                 <div className='main__home-info'>
                     <h2 className='main__home-title'>Empresas socias</h2>
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae magni aperiam aliquam? Maxime commodi, porro nulla deleniti dolores pariatur quibusdam ullam cumque culpa aliquid est quod at beatae saepe accusantium.</p>
-                    <Button contenido='Ver Empresas'/>
+                    <Link to='/company' className='link__home'><Button contenido='Ver Empresas'/></Link>
                 </div>
             </main>
         </section>

@@ -51,6 +51,9 @@
     font-weight: 600;
 }
 
+.link__home{
+    text-decoration: none;
+}
 
 @media screen and (max-width:767px) {
     .main__home{
@@ -63,5 +66,9 @@
 
     .home__title{
         font-size: 18px;
+    }
+
+    .main__home-info{
+        border: 2px solid #C51731;
     }
 }

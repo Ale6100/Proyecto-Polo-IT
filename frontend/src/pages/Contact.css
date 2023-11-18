@@ -1,43 +1,107 @@
-.section-contact {
+.section__contact-container{
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.section__contact-form {
     margin: 20px auto;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    border: 1px solid rgb(0, 0, 0);
-    max-width: 500px;
-    gap: 20px;
+    width: 500px;
 }
 
-.section-contact > p {
+.section__contact-form > h1 {
+    color:#043b7f;
     text-align: center;
+}
+
+.section__contact-form > p {
+    text-align: left;
+    color: #414141;
+}
+
+.section__contact-info{
+    width: 500px;
+    padding: 20px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 6px 8px rgb(198, 197, 197);
+    border-radius: 12px;
+}
+
+.section__contact-info > h2{
+    text-align: center;
+    color: #C51731;
+}
+
+.section__contact-info > p{
+    color: #414141;
+}
+
+.class-icons-contact{
+    width: 40px;
+    height: 40px;
+    color: #043b7f  ;
+}
+
+.info-link{
+    text-decoration: none;
+    color: #000;
+}
+
+.container__contact-icons{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0 ;
+}
+
+.container__contact-icons > span{
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .form-contact {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 
 .form-contact > div {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .form-contact > div > label > span {
     color: rgb(255, 0, 0);
 }
 
-.form-contact > div > input {
-    width: 200px;
+.form-contact > div > input{
+    width: 100%;
+    padding: 8px;
+    border-radius: 12px;
+    border: 0;
+    border: 2px solid #043b7f;
 }
 
-.form-contact > div > textarea {
+#contact-message{
+    width: 100%;
+    border-radius: 12px;
+    border: 0;
+    border: 2px solid #043b7f;
+}
+
+/* .form-contact > div > textarea {
     width: 200px;
     resize: vertical;
-}
+} */
 
 .form-contact > button {
     padding: 10px 0px;
@@ -45,7 +109,30 @@
     cursor: pointer;
 }
 
-.form-contact > button:hover {
-    background-color: #f5f5f5;
-    color: rgb(0, 255, 0);
+#btn__submit-form{
+    padding: 10px;
+    width: 30%;
+}
+
+#btn__submit-container{
+    align-items: end;
+}
+
+@media screen and (max-width:1023px) {
+    .section__contact-container{
+        flex-direction: column-reverse;
+        margin: 30px 0;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .section__contact-container{
+        flex-direction: column-reverse;
+        margin: 30px 15px;
+    }
+
+    .section__contact-form, .section__contact-info {
+        width: 100%;
+    }
+    
 }
