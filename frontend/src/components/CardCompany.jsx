@@ -181,7 +181,7 @@ const CardCompany = () => {
                             {
                                 company.linksSocialNetworks.map((obj) => (
                                     <li key={obj.name}>
-                                        <a href={obj.url}>
+                                        <a href={obj.url} target="_blank" rel="noopener noreferrer">
                                             {
                                                 obj.name === "facebook" ? <FaFacebook className={`icons-red icons-face ${company.linksSocialNetworks.length >= 4 ? "smallIcon" : ""}`}/> :
                                                 obj.name === "instagram" ? <FaInstagram className={`icons-red icons-insta ${company.linksSocialNetworks.length >= 4 ? "smallIcon" : ""}`}/> :
@@ -202,7 +202,11 @@ const CardCompany = () => {
                         <p>{company.info}</p>
                     </div>
                     <div className='box-email'>
-                        <b>Correos:</b>
+                        {
+                            company.mail.length === 0 ? <p>No hay correos para mostrar</p> : 
+                            company.mail.length === 1 ? <p>Correo:</p> :
+                            <p>Correos:</p>
+                        }
                         {
                             company.mail.map((mail) => (
                                 <li key={mail}>{mail}</li>
