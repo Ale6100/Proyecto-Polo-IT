@@ -7,7 +7,10 @@ const CompaniesContanier = ({ loading, data, totalPages, page }) => {
     return (
         <>
             {
-                loading ? <Loader /> : 
+                loading ?
+                <div className="container-div-loader">
+                    <Loader />
+                </div> : 
                 
                 data.length === 0 ? <p>No hay empresas disponibles de acuerdo a los filtros solicitados</p> :
                 

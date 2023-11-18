@@ -2,8 +2,13 @@ import "./Contact.css"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import disabledButton from "../assets/disabledButton";
+import { useEffect } from "react";
 
 const Contact = () => {
+
+    useEffect(() => {
+        document.title = "Polo IT - Contacto";
+    }, [])
 
     /**
      * Muestra un mensaje exitoso o de error
