@@ -1,3 +1,14 @@
+.container__detail-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+
+.container__detail-loader > div {
+    padding: 0px;
+}
+
 .container__detail-father{
     padding: 30px;
 }
@@ -64,9 +75,11 @@
 }
 .contact-btn{
     background-color: #043b7f;
+    cursor: pointer;
 }
 .web-btn{
     background-color: #C51731;
+    text-align: center;
 }
 
 .web-btn:hover, .contact-btn:hover{
@@ -113,6 +126,18 @@
 .image-logo-title{
     display: none;
 }
+
+.sweet-alert-custom {
+    display: flex;
+    flex-direction: column;    
+}
+
+.sweet-alert-custom div {
+    margin: 10px 0px;
+    display: flex;
+    flex-direction: column;
+}
+
 @media screen and (max-width:1023px) {
     .container__detail-card{
         flex-direction: column-reverse;
