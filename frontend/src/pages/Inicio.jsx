@@ -39,17 +39,17 @@ const Inicio = () => {
             <main className='main__home'>
                 <div className='main__home-info'>
                     <h2 className='main__home-title'>Nuestro Objetivo</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus natus, quis pariatur aperiam animi sint at. Delectus optio officiis, dolorum deleniti cupiditate veritatis assumenda nisi necessitatibus autem sapiente totam id!</p>
+                    <p>Descubre quiénes somos y cuál es la inspiración detrás de la creación de este proyecto.</p>
                     <Link to='/about' className='link__home'><Button contenido='Conocenos'/></Link>
                 </div>
                 <div className='main__home-info'>
                     <h2 className='main__home-title'>¡Contactar con el Polo IT!</h2>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. At dicta est necessitatibus iusto aliquid fugit, inventore omnis quidem odit beatae suscipit in distinctio quis nemo repellat nesciunt ducimus vero dolore.</p>
+                    <p>Puedes ponerte en contacto directo con la empresa utilizando cualquiera de nuestras vías de comunicación o visitando nuestras oficinas centrales.</p>
                     <Link to='/contact' className='link__home'><Button contenido='Contactar'/></Link>
                 </div>
                 <div className='main__home-info'>
                     <h2 className='main__home-title'>Empresas socias</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae magni aperiam aliquam? Maxime commodi, porro nulla deleniti dolores pariatur quibusdam ullam cumque culpa aliquid est quod at beatae saepe accusantium.</p>
+                    <p>Visita el listado las excepcionales empresas socias al Polo IT. Conéctate con la excelencia y encuentra oportunidades emocionantes que solo estas colaboraciones pueden ofrecerte.</p>
                     <Link to='/company' className='link__home'><Button contenido='Ver Empresas'/></Link>
                 </div>
             </main>

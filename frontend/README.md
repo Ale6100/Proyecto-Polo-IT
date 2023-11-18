@@ -11,7 +11,7 @@ Es necesario crear variables de entorno mediante la elaboración de un archivo .
 ```env
 VITE_BACKEND_URL = X # URL de tu backend sin barra lateral final
 
-VITE_ACCESS_TOKEN = X # Cadena de caracteres utilizado como mecanismo de autenticación para asegurar que solamente los usuarios que presenten este token en los encabezados de sus solicitudes puedan acceder al backend. Importante: Su valor tiene que ser el mismo que el de la variable de entorno ACCESS_TOKEN que ponés en el backend
+VITE_ACCESS_TOKEN = X # Cadena de caracteres utilizado como mecanismo de autenticación para asegurar que solamente los usuarios que presenten este token en los encabezados de sus solicitudes puedan acceder al backend. Importante: Su valor tiene que ser el mismo que el de la variable de entorno TOKEN_GRAL que ponés en el backend
 ```
 
 Nota: Puedes acceder a las variables desde el objeto ```import.meta.env```, por ejemplo:
