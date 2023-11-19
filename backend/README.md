@@ -123,12 +123,12 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
 
 ### 2. **Manejo de empresas** 
 
-* En la ruta `/api/companies/page/:page` con el método `GET` puedes obtener la página `page` de la lista de empresas de la base de datos.
+* En la ruta `/api/companies/page/:page` con el método `GET` puedes obtener la página `page` de la lista de empresas de la base de datos
 
   #### 2.1. Solicitud
   La solicitud está en la propia url:
 
-  * `page` (string): La página a solicitar. Actualmente cada página tiene un máximo de 10 elementos. El valor predeterminado es 1.
+  * `page` (string): La página a solicitar. Actualmente cada página tiene un máximo de 10 elementos
 
   * En los query parameters se colocan todos los filtros que desees aplicar sobre la lista de empresas a obtener. Los filtros son aquellas propiedades booleanas que se muestran en la sección 2.5. Todos aquellos filtros que no se pasen, no se considerarán. Por ejemplo `/api/companies/2?bigdata=true&cloud=false` trae la segunda página de la lista de todas las empresas cuya propiedad bigdata y cloud son true y false respectivamente.
 
@@ -140,6 +140,15 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
       status: "success",
       payload: [/* Array de empresas */],
       total_pages: /* Número entero representando la cantidad máxima de páginas disponibles según el filtro especificado */
+  }
+  ```
+
+  Si el parámetro `page` no es un número de página válido (número entero de tipo string), se devuelve una respuesta con el estado 400 y el siguiente cuerpo:
+
+  ```js
+  {
+    status: "error",
+    error: "Page parameter is not a valid page number"
   }
   ```
 
@@ -248,7 +257,7 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
   }
   ```
 
-* En la ruta `/api/companies/id` con el método `PUT`, puedes actualizar la empresa con el `id` especificado.
+* En la ruta `/api/companies/:id` con el método `PUT`, puedes actualizar la empresa con el `id` especificado.
 
   #### 2.7. Solicitud
   En el cuerpo de la solicitud debes enviar sólo las propiedades que desees actualizar (lee la sección 2.5 para saber cuáles son), por lo tanto ninguna es obligatoria.
@@ -290,7 +299,7 @@ Si no envías el token de acceso, se devuelve una respuesta con el estado 403 y 
   }
   ```
 
-* En la ruta `/api/companies/id` con el método `DELETE`, puedes eliminar la empresa con el `id` especificado.
+* En la ruta `/api/companies/:id` con el método `DELETE`, puedes eliminar la empresa con el `id` especificado.
 
   #### 2.9. Solicitud
   No es necesario enviar ninguna información en el cuerpo de la solicitud.

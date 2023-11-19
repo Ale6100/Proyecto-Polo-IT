@@ -231,4 +231,3 @@ const CardCompany = () => {
 }
 
 export default CardCompany;
-
