@@ -5,7 +5,7 @@ import { FiltersType, OptionalCompanyType, TypeSocialNetwork } from "../types/co
 
 const container = new Container()
 
-const saveOne = async (req: Request, res: Response) => { // En /api/companies con el método PUT se puede agregar una empresa
+const saveOne = async (req: Request, res: Response) => { // En /api/companies con el método POST se puede agregar una empresa
     const { name, info, logo, video, website, mail, linksSocialNetworks, bigdata, cloud, testing, softwarepropio, softwarepropioverticales, softwareterceros, softwaretercerosverticales, asesoriait, mantenimiento, actividadesexterior, capacitacion, consultoria } = req.body
 
     try {
@@ -59,10 +59,21 @@ const saveOne = async (req: Request, res: Response) => { // En /api/companies co
     }
 }
 
-const getPage = async (req: Request, res: Response) => { // /api/companies/page/:page con el método GET
+const getPage = async (req: Request, res: Response) => { // En /api/companies/page/:page con el método GET puedes obtener la página page de la lista de empresas de la base de datos
     try {
         const { page } = req.params
         const { bigdata, cloud, testing, softwarepropio, softwarepropioverticales, softwareterceros, softwaretercerosverticales, asesoriait, mantenimiento, actividadesexterior, capacitacion, consultoria } = req.query
+
+        if (!page || typeof page !== "string") {
+            req.logger.error("Page parameter is not a valid page number")
+            return res.status(400).send({ status: "error", error: "Page parameter is not a valid page number" })
+        }
+
+        let page_ = parseInt(page)
+        if (!page_ || page_ < 0) {
+            req.logger.error("Page parameter is not a valid page number")
+            return res.status(400).send({ status: "error", error: "Page parameter is not a valid page number" })
+        }
         
         const filters: FiltersType = {}
 
@@ -79,11 +90,6 @@ const getPage = async (req: Request, res: Response) => { // /api/companies/page/
         if (capacitacion === "false" || capacitacion === "true") filters.capacitacion = JSON.parse(capacitacion)
         if (consultoria === "false" || consultoria === "true") filters.consultoria = JSON.parse(consultoria)
 
-        let page_ = 1
-        if (page) {
-            page_ = parseInt(page)
-        }
-
         const elements_per_page = 10
         const total_count = await container.count(filters)
         const total_pages = Math.ceil(total_count / elements_per_page)
@@ -96,7 +102,7 @@ const getPage = async (req: Request, res: Response) => { // /api/companies/page/
     }
 }
 
-const getById = async (req: Request, res: Response ) => { // En /api/companies/id con el método GET se obtiene una empresa por su id
+const getById = async (req: Request, res: Response ) => { // En /api/companies/:id con el método GET se obtiene una empresa por su id
     try {
         const { id } = req.params
 
@@ -119,7 +125,7 @@ const getById = async (req: Request, res: Response ) => { // En /api/companies/i
     }
 }
 
-const updateById = async (req: Request, res: Response) => { // En /api/companies/id con el método PUT se actualizan las propiedades una empresa según su id
+const updateById = async (req: Request, res: Response) => { // En /api/companies/:id con el método PUT se actualizan las propiedades una empresa según su id
     const { name, info, logo, video, website, mail, linksSocialNetworks, bigdata, cloud, testing, softwarepropio, softwarepropioverticales, softwareterceros, softwaretercerosverticales, asesoriait, mantenimiento, actividadesexterior, capacitacion, consultoria } = req.body
     const { id } = req.params
 
@@ -192,7 +198,7 @@ const updateById = async (req: Request, res: Response) => { // En /api/companies
     }
 }
 
-const deleteById = async (req: Request, res: Response) => { // En /api/companies/id con el método DELETE se elimina una empresa según su id
+const deleteById = async (req: Request, res: Response) => { // En /api/companies/:id con el método DELETE se elimina una empresa según su id
     const { id } = req.params
 
     try {

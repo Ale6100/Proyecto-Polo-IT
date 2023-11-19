@@ -26,7 +26,7 @@ const sendMail = async (objConf: objConf) => { // Envía un mail según los dato
     
     try {
         await transport.sendMail({
-            from: `<${from}>`, // El from debe ser quien envía el mail, aunque realmente esto es simbólico porque quien envía el mail realmente es el definido en config.nodemailer.user. Por esta razón recomiendo colocar el email de envío dentro del propio html o en el subject de la petición | El < > es opcional
+            from: `<${from}>`, // El from debe ser quien envía el mail, aunque realmente esto es simbólico porque quien envía el mail realmente es el definido en config.nodemailer.user. Por esta razón recomendamos colocar el email de envío dentro del propio html o en el subject de la petición | El < > es opcional
             to: to, // Mail de destino | También se puede configurar para que envíe a varios mails, si el "to" fuera un arreglo de mails
             subject: subject, // Asunto
             html: html, // HTML del cuerpo del mail
