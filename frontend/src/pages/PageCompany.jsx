@@ -2,7 +2,7 @@ import './pageCompany.css';
 import Filter from '../components/Filter';
 import CompaniesContanier from '../containers/CompaniesContainer';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const PageCompany = () => {
     const [queryParams, setQueryParams] = useState("");
@@ -10,7 +10,10 @@ const PageCompany = () => {
     const [loading, setLoading] = useState(true);
     const [totalPages, setTotalPages] = useState(0);
     const [filterVisible, setFilterVisible] = useState(false);
+    
     const { page } = useParams()
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         document.title = "Polo IT - Empresas";
@@ -23,9 +26,14 @@ const PageCompany = () => {
             }
         }).then(res => res.json())
         .then(res => {
+            if (res.status === "error") {
+                navigate("/");
+            }
+
             setData(res.payload);
             setTotalPages(res.total_pages);
         }).finally(() => setLoading(false));
+        // eslint-disable-next-line
     }, [page, queryParams]);
 
     return (

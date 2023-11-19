@@ -170,12 +170,12 @@ const CardCompany = () => {
         <div className='container__detail-father'>
             <div className='container__title-company'>
                 <h2 className='title-company'>{company.name}</h2>
-                <img src={company.logo.includes("http") ? company.logo : `/img/logo/${company.logo}`} alt={`Logo de ${company.name}`} className='image-logo-title' />
+                <img src={company.logo ? (company.logo.includes("http") ? company.logo : `/img/logo/${company.logo}`) : "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/2048px-Imagen_no_disponible.svg.png"} alt={`Logo de ${company.name}`} className='image-logo-title' />
             </div>
             <div className='container__detail-card'>
                 <div className='container__info'>
                     <div className='container__img-logo'>
-                    <img src={company.logo.includes("http") ? company.logo : `/img/logo/${company.logo}`} alt={`Logo de ${company.name}`} className='image-logo' />
+                    <img src={company.logo ? (company.logo.includes("http") ? company.logo : `/img/logo/${company.logo}`) : "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/2048px-Imagen_no_disponible.svg.png"} alt={`Logo de ${company.name}`} className='image-logo' />
                         <div className={`container__redes ${company.linksSocialNetworks.length >= 4 ? "smallGap" : ""}`}>
                             
                             {
@@ -189,7 +189,7 @@ const CardCompany = () => {
                                                 obj.name === "x" ? <FaXTwitter className={`icons-red icons-x ${company.linksSocialNetworks.length >= 4 ? "smallIcon" : ""}`}/> :
                                                 obj.name === "youtube" ? <FaYoutube className={`icons-red icons-you ${company.linksSocialNetworks.length >= 4 ? "smallIcon" : ""}`}/> :
                                                 obj.name === "whatsapp" ? <FaWhatsapp className={`icons-red icons-wsp ${company.linksSocialNetworks.length >= 4 ? "smallIcon" : ""}`}/> :
-                                                "ERROR, verificar el nombre de la red social"
+                                                `${obj.name}`
                                             }
                                         </a>
                                     </li>
@@ -231,4 +231,3 @@ const CardCompany = () => {
 }
 
 export default CardCompany;
-

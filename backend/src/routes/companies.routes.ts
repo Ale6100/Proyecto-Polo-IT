@@ -5,7 +5,6 @@ const router = Router(); // Para este proyecto en particular no se consideró ne
 
 router.post("/", companiesControllers.saveOne)
 
-router.get("/page/", companiesControllers.getPage)
 router.get("/page/:page", companiesControllers.getPage)
 
 router.get("/:id", companiesControllers.getById)

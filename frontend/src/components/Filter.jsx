@@ -87,7 +87,7 @@ const Filter = ({ setQueryParams, filterVisible }) => {
             <h2>Categorías</h2>
                 
             <form onChange={changeFilter}>
-                <h3>Filtros</h3>
+                
 
                 <div className="container-divs">
                     <h4>Análisis de datos</h4>

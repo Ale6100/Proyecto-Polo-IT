@@ -38,21 +38,32 @@ const Inicio = () => {
             </div>
             <main className='main__home'>
                 <div className='main__home-info'>
+                    <h2 className='main__home-title'>Empresas socias</h2>
+                    <p>Visita el listado de las empresas socias al Polo IT. Encuentra oportunidades y conéctate de acuerdo a tus necesecidades</p>
+                    <Link to='/company/1' className='link__home'><Button contenido='Ver Empresas'/></Link>
+                </div>
+                <div className='main__home-info'>
                     <h2 className='main__home-title'>Nuestro Objetivo</h2>
-                    <p>Descubre quiénes somos y cuál es la inspiración detrás de la creación de este proyecto.</p>
+                    <p>Descubre más sobre nosotros y cuál es la inspiración detrás de la creación de este proyecto.</p>
                     <Link to='/about' className='link__home'><Button contenido='Conocenos'/></Link>
                 </div>
                 <div className='main__home-info'>
                     <h2 className='main__home-title'>¡Contactar con el Polo IT!</h2>
-                    <p>Puedes ponerte en contacto directo con la empresa utilizando cualquiera de nuestras vías de comunicación o visitando nuestras oficinas centrales.</p>
+                    <p>Si estas interesado en conocer mas, no dudes en ponerte en contacto directo con la empresa utilizando cualquiera de nuestras vías de comunicación.</p>
                     <Link to='/contact' className='link__home'><Button contenido='Contactar'/></Link>
                 </div>
-                <div className='main__home-info'>
-                    <h2 className='main__home-title'>Empresas socias</h2>
-                    <p>Visita el listado las excepcionales empresas socias al Polo IT. Conéctate con la excelencia y encuentra oportunidades emocionantes que solo estas colaboraciones pueden ofrecerte.</p>
-                    <Link to='/company' className='link__home'><Button contenido='Ver Empresas'/></Link>
-                </div>
             </main>
+            <div className='main__container-polo'>
+                <figure>
+                    <img src="./img/paginapolo.png" alt="imagen principal de la pagina del polo IT" />
+                </figure>
+
+                <div className='main__info-polo'>
+                    <h2 className='title__main-polo'>+ Sobre el Polo IT</h2>
+                    <p>Tambien podes conocer la pagina oficial del polo IT donde encontraras mas informacion sobre eventos , el crecimiento de la indusctria, eventos de capacitacion beneficios por ser parte de la comunida IT y mas.</p>
+                    <a href="https://www.poloitbuenosaires.org.ar/" target="_blank" rel="noopener noreferrer"><Button contenido="Visitar sitio" styleIdBtn="btn_home-polo" /></a>
+                </div>
+            </div>
         </section>
     );
 }
