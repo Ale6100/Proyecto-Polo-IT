@@ -5,7 +5,7 @@ const Company = ({_id, name, logo}) => {
     return (
         <Link className="company" to={`/detail/${_id}`}>
             <div>
-                <img src={logo.includes("http") ? logo : `/img/logo/${logo}`} alt={`Logo ${name}`} />
+                <img src={logo ? (logo.includes("http") ? logo : `/img/logo/${logo}`) : "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/2048px-Imagen_no_disponible.svg.png"} alt={`Logo ${name}`} />
             </div>
             
             <p>{name}</p>

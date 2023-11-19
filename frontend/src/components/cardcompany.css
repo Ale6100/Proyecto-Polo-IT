@@ -44,11 +44,12 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-} 
+}
 .image-logo{
+    padding: 10px;
     width: 200px;
     border-radius: 12px;
-    border: 2px solid #C51731;
+    background: linear-gradient(120deg, rgba(0, 63, 147, 1) 35%, rgba(242, 14, 14, 1) 37%, rgba(242, 14, 14, 1) 63%, rgba(0, 63, 147, 1) 65%);    
 }
 .title-company{
     color: #C51731;
@@ -127,6 +128,7 @@
 .video-iframe{
     width: 100%;
     height: 315px;
+    object-fit: contain;
 }
 .image-logo-title{
     display: none;
@@ -175,10 +177,11 @@
         height: 315px;
     }
     .image-logo-title{
+        padding: 10px;
         display: flex;
         width: 130px;
         border-radius: 12px;
-        border: 2px solid #C51731;
+        background: linear-gradient(120deg, rgba(0, 63, 147, 1) 35%, rgba(242, 14, 14, 1) 37%, rgba(242, 14, 14, 1) 63%, rgba(0, 63, 147, 1) 65%);    
     }
     .image-logo{
         display: none;

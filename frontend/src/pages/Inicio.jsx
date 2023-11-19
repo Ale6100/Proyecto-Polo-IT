@@ -57,8 +57,9 @@ const Inicio = () => {
                 <figure>
                     <img src="./img/paginapolo.png" alt="imagen principal de la pagina del polo IT" />
                 </figure>
+
                 <div className='main__info-polo'>
-                    <h2 className='title__main-polo'>+ sobre el Polo IT</h2>
+                    <h2 className='title__main-polo'>+ Sobre el Polo IT</h2>
                     <p>Tambien podes conocer la pagina oficial del polo IT donde encontraras mas informacion sobre eventos , el crecimiento de la indusctria, eventos de capacitacion beneficios por ser parte de la comunida IT y mas.</p>
                     <a href="https://www.poloitbuenosaires.org.ar/" target="_blank" rel="noopener noreferrer"><Button contenido="Visitar sitio" styleIdBtn="btn_home-polo" /></a>
                 </div>

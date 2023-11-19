@@ -79,6 +79,11 @@
     color: white;
 }
 
+.filter-container-buttons > button:active {
+    background-color: #5ca2ff;
+    color: rgb(0, 0, 0);
+}
+
 @media screen and (max-width: 768px) {
     .container-filter {
         position: absolute;
