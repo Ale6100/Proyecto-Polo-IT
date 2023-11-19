@@ -11,15 +11,13 @@
     gap: 15px;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 0 6px 8px #b9b7b7;
     margin: 10px;
     padding: 15px;
     text-align: center;
-    border: 2px solid transparent;
 }
 
 .main__home-info:hover{
-    border-color: #C51731;
+    box-shadow: 0 0 10px 8px #aaa6a6;
 }
 
 .main__home-info p{
@@ -44,8 +42,8 @@
 .home__title{
     text-align: center;
     font-size: 32px;
-    color: #C51731;
-    border-bottom: 2px solid #C51731;
+    color: #043b7f;
+    border-bottom: 3px solid #043b7f;
     padding: 10px;
     margin: 0 10px;
     font-weight: 600;
@@ -61,6 +59,42 @@
     cursor: pointer;
 }
 
+.main__container-polo{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.main__container-polo img{
+    width: 300px;
+    border-radius: 8px;
+}
+
+.main__info-polo{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 45%;
+}
+
+.main__info-polo > a{
+    text-decoration: none;
+}
+
+.title__main-polo{
+    color: #043b7f;
+    font-size: 28px;
+}
+
+#btn_home-polo{
+    background-color: #043b7f;
+}
+#btn_home-polo:hover{
+    background-color: rgb(231, 132, 132);
+    color: #000;
+}
+
 @media screen and (max-width:767px) {
     .main__home{
         flex-direction: column;
@@ -74,7 +108,24 @@
         font-size: 18px;
     }
 
-    .main__home-info{
-        border: 2px solid #C51731;
+    .main__container-polo{
+        flex-direction: column;
+        margin:20px;
+    }
+    
+    .main__container-polo img{
+        width:100%;
+    }
+
+    .main__info-polo{
+        width: 100%;
+    }
+
+    #btn_home-polo{
+        width: 100%;
+    }
+
+    .title__main-polo{
+        font-size: 24px;
     }
 }
