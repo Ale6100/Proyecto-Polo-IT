@@ -1,12 +1,16 @@
 import "./CompaniesContainer.css"
 import Company from "../components/Company";
 import Loader from "../components/Loader";
+import { NavLink } from "react-router-dom";
 
-const CompaniesContanier = ({ loading, data, totalPages, page, setPage }) => {
+const CompaniesContanier = ({ loading, data, totalPages, page }) => {
     return (
         <>
             {
-                loading ? <Loader /> : 
+                loading ?
+                <div className="container-div-loader">
+                    <Loader />
+                </div> : 
                 
                 data.length === 0 ? <p>No hay empresas disponibles de acuerdo a los filtros solicitados</p> :
                 
@@ -14,7 +18,7 @@ const CompaniesContanier = ({ loading, data, totalPages, page, setPage }) => {
                     <div className="container-search">
                     {
                         Array(totalPages).fill(0).map((_, index) => (
-                            <button key={index} className={(index+1) === page ? "btnActive" : ""} onClick={() => setPage(index+1)}>{index+1}</button>
+                            <NavLink key={index} className={(index+1) === page ? "btnActive" : ""} to={`/company/${index+1}`}>{index+1}</NavLink>
                         ))
                     }
                     </div>

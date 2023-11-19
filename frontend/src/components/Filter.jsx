@@ -1,41 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Filter.css";
+import { useNavigate } from "react-router-dom";
 
-const Filter = ({ setQueryParams, setPage }) => {
-    const [formValues, setFormValues] = useState({
-        bigdata: "indistinto",
-        cloud: "indistinto",
-        testing: "indistinto",
-        softwarepropio: "indistinto",
-        softwarepropioverticales: "indistinto",
-        softwareterceros: "indistinto",
-        softwaretercerosverticales: "indistinto",
-        asesoriait: "indistinto",
-        mantenimiento: "indistinto",
-        actividadesexterior: "indistinto",
-        capacitacion: "indistinto",
-        consultoria: "indistinto"
-    })
+const estructuraFormLimpio = {
+    bigdata: "indistinto",
+    cloud: "indistinto",
+    testing: "indistinto",
+    softwarepropio: "indistinto",
+    softwarepropioverticales: "indistinto",
+    softwareterceros: "indistinto",
+    softwaretercerosverticales: "indistinto",
+    asesoriait: "indistinto",
+    mantenimiento: "indistinto",
+    actividadesexterior: "indistinto",
+    capacitacion: "indistinto",
+    consultoria: "indistinto"
+}
 
-    const filtrar = e => {
-        e.preventDefault();
-    
-        const formData = new FormData(e.target);
-    
-        let query = "";
-    
-        formData.forEach((value, key) => { // Construimos la variable query para luego pasarla al backend
-            if (value !== "indistinto") {
-                query += `&${key}=${value}`;
-            }
-            setFormValues(prev => {
-                return {...prev, [key]: value }
-            });
-        });
+const Filter = ({ setQueryParams, filterVisible }) => {
+    const [formValues, setFormValues] = useState(estructuraFormLimpio)
 
-        setPage(1);
-        setQueryParams(query);
-    };
+    const [formLimpio, setFormLimpio] = useState(true);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (JSON.stringify(formValues) === JSON.stringify(estructuraFormLimpio)) {
+            setFormLimpio(true);
+        } else {
+            setFormLimpio(false);
+        }
+    }, [formValues]);
 
     const CrearRadio = ({p, name}) => {
         return (
@@ -62,11 +57,36 @@ const Filter = ({ setQueryParams, setPage }) => {
         )
     }
 
+    const limpiar = () => {
+        setFormValues(estructuraFormLimpio);
+        navigate(`/company/1`);
+        setQueryParams("");
+    }
+
+    const changeFilter = e => {
+        setFormValues(prev => {
+            return {...prev, [e.target.name]: e.target.value }
+        });
+
+        let query = "";
+
+        for (const [key, value] of Object.entries(formValues)) {
+            if (e.target.name === key) {
+                query += `&${key}=${e.target.value}`;
+            } else {
+                query += `&${key}=${value}`;
+            }
+        }
+
+        navigate(`/company/1`);
+        setQueryParams(query);        
+    }
+
     return (
-        <section className="container-filter">
+        <section className={`container-filter ${filterVisible ? "filter-visible" : ""}`}>
             <h2>Categorías</h2>
                 
-            <form onSubmit={filtrar}>
+            <form onChange={changeFilter}>
                 <h3>Filtros</h3>
 
                 <div className="container-divs">
@@ -112,8 +132,13 @@ const Filter = ({ setQueryParams, setPage }) => {
 
                     <CrearRadio p={"Consultoría"} name={"consultoria"} />
                 </div>                
-
-                <button type="submit">Filtrar</button>
+                
+                {
+                    formLimpio ||
+                    <div className="filter-container-buttons">
+                        <button onClick={limpiar} type="reset">Limpiar</button>
+                    </div>
+                }
             </form>
         </section>
     )

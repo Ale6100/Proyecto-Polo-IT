@@ -1,18 +1,26 @@
+.container-div-loader {
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
 .container-search {
     margin-bottom: 10px;
     display: flex;
     gap: 10px;
 }
 
-.container-search > button {
+.container-search > a {
     flex: 1;
-    cursor: pointer;
+    background-color: rgb(190, 190, 190);
+    text-align: center;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
 }
 
-.container-search > button.btnActive {
+.container-search > a.active {
     background-color: #043b7f;
     color: white;
-    border: 0px
 }
 
 .container-companies {
@@ -20,4 +28,14 @@
     grid-template-columns: 1fr 1fr;
     max-width: 500px;
     gap: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .container-div-loader {
+        padding: 0px;
+    }
+    
+    .container-companies {
+        grid-template-columns: 1fr;
+    }
 }

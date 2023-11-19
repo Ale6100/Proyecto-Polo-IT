@@ -1,0 +1,27 @@
+.pageCompany-div {
+    margin: 10px;
+}
+
+.pageCompany-img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: none;
+    transition: all 0.4s;
+    rotate: 90deg;
+}
+
+.filter-visible {
+    rotate: 0deg;
+}
+
+.pageCompany-section {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media screen and (max-width: 768px) {
+    .pageCompany-img {
+        display: inline-block;
+    }
+}
