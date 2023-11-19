@@ -46,7 +46,7 @@
 .class-icons-contact{
     width: 40px;
     height: 40px;
-    color: #043b7f  ;
+    color: #043b7f;
 }
 
 .info-link{
@@ -129,4 +129,9 @@
     .section__contact-form, .section__contact-info {
         width: 100%;
     }
+
+    #btn__submit-form{
+        width: 100%;
+    }
+    
 }
