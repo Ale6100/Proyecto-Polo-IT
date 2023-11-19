@@ -9,14 +9,19 @@
 .container-filter > h2 {
     padding: 4px;
     border: 1px solid rgb(0, 0, 0);
+    background: rgb(0,63,147);
+    background: linear-gradient(120deg, rgba(0,63,147,1) 10%, rgba(242,14,14,1) 20%, rgba(242,14,14,1) 80%, rgba(0,63,147,1) 90%);
+    margin: 5px 0px 20px 0px;
+    color: white;
 }
 
 .container-filter > form {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border: 1px solid rgb(0, 0, 0);
     border-top: 0px;
+    background-color: white;
+    box-shadow:0 0 2px 2px  #c5c5c5;
 }
 
 .container-divs {
@@ -24,21 +29,21 @@
     flex-direction: column;
     gap: 10px;
     padding: 10px;
-    border: 1px solid rgb(0, 0, 0);
     border-left: 0px;
     border-right: 0px;
 }
 
 .container-divs > h4 {
     text-decoration: underline;
+    font-size: large;
 }
 
 .container-divs > div {
-    padding-right: 5px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(200, 200, 200)
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: rgb(200, 200, 200);
+    border-radius: 5px;
 }
 
 .container-divs > div > p {
@@ -47,10 +52,12 @@
 
 .container-divInputs {
     text-align: start;
+    padding-left: 50px;
 }
 
 .container-divs > div > p {
     margin-bottom: 5px;
+    padding-left: 10px;
 }
 
 .container-divInputs > div > input {
@@ -59,12 +66,17 @@
 
 .filter-container-buttons {
     display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .filter-container-buttons > button {
     cursor: pointer;
-    flex: 1;
-    height: 30px;
+    font-size: large;
+    padding: 5px 30px 5px 30px;
+    background-color: #003f93;
+    border-radius: 50px;
+    color: white;
 }
 
 @media screen and (max-width: 768px) {
