@@ -60,7 +60,7 @@ const Inicio = () => {
 
                 <div className='main__info-polo'>
                     <h2 className='title__main-polo'>+ Sobre el Polo IT</h2>
-                    <p>Tambien podes conocer la pagina oficial del polo IT donde encontraras mas informacion sobre eventos , el crecimiento de la indusctria, eventos de capacitacion beneficios por ser parte de la comunida IT y mas.</p>
+                    <p>También podés conocer la página oficial del Polo IT donde encontrarás más información sobre eventos, el crecimiento de la industria, eventos de capacitación, beneficios por ser parte de la comunidad IT y más.</p>
                     <a href="https://www.poloitbuenosaires.org.ar/" target="_blank" rel="noopener noreferrer"><Button contenido="Visitar sitio" styleIdBtn="btn_home-polo" /></a>
                 </div>
             </div>
