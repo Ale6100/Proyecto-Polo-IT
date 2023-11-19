@@ -12,7 +12,7 @@ const About = () => {
         <section className='section__about-container'>
             <h1>¿A que nos dedicamos?</h1>
             <div className='about__info'>
-                En nuestro sitio web, nos dedicamos con pasión a ayudarte a encontrar la empresa que mejor se adapte a tus necesidades o simplemente conocer mas de sus prestaciones, independientemente del sector. <br /> Contamos con un sistema de filtros avanzados que nos permite afinar la búsqueda y proporcionarte opciones que se alineen perfectamente con lo que estás buscando.
+                En nuestra plataforma web, nos apasiona brindarte asistencia para descubrir la empresa que mejor satisfaga tus necesidades o simplemente para conocer más sobre sus servicios, independientemente del sector. Contamos con un avanzado sistema de filtros que nos permite refinar la búsqueda y ofrecerte opciones que se alineen perfectamente con lo que estás buscando.
             </div>
             <div className='about__valores'>
                 <div>

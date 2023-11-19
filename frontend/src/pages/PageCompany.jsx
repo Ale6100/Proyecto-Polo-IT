@@ -4,8 +4,7 @@ import CompaniesContanier from '../containers/CompaniesContainer';
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-const PageCompany = () => {
-    const [queryParams, setQueryParams] = useState("");
+const PageCompany = ({ queryParams, setQueryParams, formValues, setFormValues }) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [totalPages, setTotalPages] = useState(0);
@@ -40,7 +39,7 @@ const PageCompany = () => {
         <div className='pageCompany-div' >
             <img onClick={() => setFilterVisible(!filterVisible)} className={`pageCompany-img ${filterVisible ? 'filter-visible' : ''}`} src="./img/configuration.svg" alt="" />
             <section className='pageCompany-section'>
-                <Filter setQueryParams={setQueryParams} filterVisible={filterVisible} />
+                <Filter setQueryParams={setQueryParams} filterVisible={filterVisible} formValues={formValues} setFormValues={setFormValues} />
                 <CompaniesContanier loading={loading} data={data} totalPages={totalPages} page={page} />
             </section>
         </div>
