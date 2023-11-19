@@ -107,6 +107,7 @@
 #btn__submit-form{
     padding: 10px;
     width: 30%;
+    cursor: pointer;
 }
 
 #btn__submit-container{

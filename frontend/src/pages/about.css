@@ -39,6 +39,11 @@
 
 .link-services{
     text-decoration: none;
+    width: fit-content;
+}
+
+.link-services button {
+    cursor: pointer;
 }
 
 .subtitle__about{

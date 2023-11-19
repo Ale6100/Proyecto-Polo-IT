@@ -80,6 +80,7 @@
 
 .main__info-polo > a{
     text-decoration: none;
+    width: fit-content;
 }
 
 .title__main-polo{
@@ -89,6 +90,7 @@
 
 #btn_home-polo{
     background-color: #043b7f;
+    cursor: pointer;
 }
 #btn_home-polo:hover{
     background-color: rgb(231, 132, 132);
@@ -113,6 +115,10 @@
         margin:20px;
     }
     
+    .main__info-polo > a {
+        width: 100%;
+    }
+
     .main__container-polo img{
         width:100%;
     }
@@ -127,5 +133,6 @@
 
     .title__main-polo{
         font-size: 24px;
+        text-align: center;
     }
 }

@@ -10,24 +10,35 @@
 }
 
 .company:hover {
-    background-color: rgb(100, 100, 100);
+    box-shadow: 0 0 6px 8px rgb(200, 200, 200);
 }
 
 .company > div {
     width: 200px;
     height: 200px;
-    border-radius: 50%;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgb(0, 0, 0);
+    border: 2px solid rgb(200, 200, 200);
+    box-shadow: 0 0 2px 2px rgb(200, 200, 200);
+    /* background: rgb(0,63,147, 0.5); */
+    background: linear-gradient(120deg, rgba(0, 63, 147, 1) 35%, rgba(242, 14, 14, 1) 37%, rgba(242, 14, 14, 1) 63%, rgba(0, 63, 147, 1) 65%);    
+    
 }
 
 .company > div > img {
     width: 100%;
+    /* background: linear-gradient(120deg, rgba(0, 63, 147, 1) 35%, rgba(242, 14, 14, 1) 37%, rgba(242, 14, 14, 1) 63%, rgba(0, 63, 147, 1) 65%);         */
 }
 
 .company > p {
     text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .company > div {
+        width: 120px;
+        height: 120px;        
+    }
 }
