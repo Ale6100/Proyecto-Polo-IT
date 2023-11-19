@@ -122,11 +122,11 @@ const Contact = () => {
             </div>
             <div className="section__contact-info">
                 <h2>Información adicional</h2>
-                <p>Podes comunicarte directamente con la empresa con cualquiera de nuestras vias de contato, o acercarte a las oficinas centrales.</p>
+                <p>Puedes ponerte en contacto directo con la empresa utilizando cualquiera de nuestras vías de comunicación o visitando nuestras oficinas centrales.</p>
                 <div className="container__contact-icons">
                     <span><MdOutlineMail className="class-icons-contact"/>poloit@poloitbuenosaires.org.ar</span>
-                    <span><FaWhatsapp className="class-icons-contact"/><a href="https://api.whatsapp.com/send/?phone=5491157826061&text&type=phone_number&app_absent=0" target="_blank" className="info-link">5491157826061</a></span>
-                    <span><FaMapMarkerAlt className="class-icons-contact"/><a href="https://www.google.com/maps/place/Algarrobo+1041,+C1293ABA+CABA/@-34.658587,-58.4044062,13.5z/data=!4m10!1m2!2m1!1sAlgarrobo+1041+-+PB+Barco+B+++1293+CABA!3m6!1s0x95bccb1679eb4b7b:0xeeec132edf86aa0d!8m2!3d-34.6548332!4d-58.3794175!15sCidBbGdhcnJvYm8gMTA0MSAtIFBCIEJhcmNvIEIgICAxMjkzIENBQkGSARBnZW9jb2RlZF9hZGRyZXNz4AEA!16s%2Fg%2F11sk3lplgq?entry=ttu" className="info-link" target="_blank">Algarrobo 1041 - PB Barco B 1293 CABA</a></span>
+                    <span><FaWhatsapp className="class-icons-contact"/><a href="https://api.whatsapp.com/send/?phone=5491157826061&text&type=phone_number&app_absent=0" target="_blank" rel="noreferrer" className="info-link">5491157826061</a></span>
+                    <span><FaMapMarkerAlt className="class-icons-contact"/><a href="https://www.google.com/maps/place/Algarrobo+1041,+C1293ABA+CABA/@-34.658587,-58.4044062,13.5z/data=!4m10!1m2!2m1!1sAlgarrobo+1041+-+PB+Barco+B+++1293+CABA!3m6!1s0x95bccb1679eb4b7b:0xeeec132edf86aa0d!8m2!3d-34.6548332!4d-58.3794175!15sCidBbGdhcnJvYm8gMTA0MSAtIFBCIEJhcmNvIEIgICAxMjkzIENBQkGSARBnZW9jb2RlZF9hZGRyZXNz4AEA!16s%2Fg%2F11sk3lplgq?entry=ttu" className="info-link" target="_blank" rel="noreferrer">Algarrobo 1041 - PB Barco B 1293 CABA</a></span>
                 </div>
             </div>
         </section>
