@@ -98,11 +98,6 @@
     border: 2px solid #043b7f;
 }
 
-/* .form-contact > div > textarea {
-    width: 200px;
-    resize: vertical;
-} */
-
 .form-contact > button {
     padding: 10px 0px;
     font-weight: bold;
@@ -132,6 +127,10 @@
     }
 
     .section__contact-form, .section__contact-info {
+        width: 100%;
+    }
+
+    #btn__submit-form{
         width: 100%;
     }
     
