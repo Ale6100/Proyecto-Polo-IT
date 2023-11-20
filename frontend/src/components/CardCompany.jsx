@@ -111,7 +111,7 @@ const CardCompany = () => {
 
             const body = {
                 from: email,
-                to: `alejandro_portaluppi@outlook.com`, // company.mail[0] //! No colocar el mail real por el momento
+                to: company.mail[0], //! Cuidado, es el mail real
                 subject: `(Ignorar) - Contacto`,
                 html: `
                 <h2>Por favor, ignore este mail</h2>

@@ -35,7 +35,7 @@ const Contact = () => {
 
         const form = e.target
 
-        const button = form.lastChild
+        const button = form.lastChild.lastChild
 
         const formData = new FormData(form)
 
@@ -50,7 +50,7 @@ const Contact = () => {
 
         const body = {
             from: email,
-            to: "alejandro_portaluppi@outlook.com", // "poloit@poloitbuenosaires.org.ar" //! No colocar el mail real del polo por el momento
+            to: "poloit@poloitbuenosaires.org.ar", //! Cuidado, es el mail real
             subject: `(Ignorar) - Formulario de contacto`,
             html: `
             <h2>Por favor, ignore este mail</h2>
@@ -85,6 +85,7 @@ const Contact = () => {
         } else {
             sendToast("Error, por favor intente de nuevo más tarde", "error")
         }
+        form.reset()
         disabledButton(button, false)
     }
 
