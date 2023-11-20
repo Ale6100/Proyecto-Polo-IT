@@ -1,25 +1,9 @@
 import { useEffect, useState } from "react";
 import "./Filter.css";
 import { useNavigate } from "react-router-dom";
+import estructuraFormLimpio from "../assets/estructuraFormLimpio";
 
-const estructuraFormLimpio = {
-    bigdata: "indistinto",
-    cloud: "indistinto",
-    testing: "indistinto",
-    softwarepropio: "indistinto",
-    softwarepropioverticales: "indistinto",
-    softwareterceros: "indistinto",
-    softwaretercerosverticales: "indistinto",
-    asesoriait: "indistinto",
-    mantenimiento: "indistinto",
-    actividadesexterior: "indistinto",
-    capacitacion: "indistinto",
-    consultoria: "indistinto"
-}
-
-const Filter = ({ setQueryParams, filterVisible }) => {
-    const [formValues, setFormValues] = useState(estructuraFormLimpio)
-
+const Filter = ({ setQueryParams, filterVisible, formValues, setFormValues }) => {
     const [formLimpio, setFormLimpio] = useState(true);
 
     const navigate = useNavigate();
@@ -73,7 +57,8 @@ const Filter = ({ setQueryParams, filterVisible }) => {
         for (const [key, value] of Object.entries(formValues)) {
             if (e.target.name === key) {
                 query += `&${key}=${e.target.value}`;
-            } else {
+            
+            } else if (value !== "indistinto") {
                 query += `&${key}=${value}`;
             }
         }

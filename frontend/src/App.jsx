@@ -8,14 +8,19 @@ import CardCompany from './components/CardCompany';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import Inicio from './pages/Inicio';
+import { useState } from 'react';
+import estructuraFormLimpio from './assets/estructuraFormLimpio';
 
 function App() {
+    const [queryParams, setQueryParams] = useState("");
+    const [formValues, setFormValues] = useState(estructuraFormLimpio)
+
     return (
         <BrowserRouter>
             <Navbar/>
             <Routes>
                 <Route path='/' element={<Inicio/>}/>
-                <Route path='/company/:page' element={<PageCompany />} />
+                <Route path='/company/:page' element={<PageCompany queryParams={queryParams} setQueryParams={setQueryParams} formValues={formValues} setFormValues={setFormValues} />} />
                 <Route path='/detail/:id' element={<CardCompany />} />
                 <Route path='/contact' element={<Contact />} />
                 <Route path='/about' element={<About/>}/>
