@@ -29,9 +29,9 @@ const Inicio = () => {
                 modules={[Autoplay, Pagination, Navigation]}
                 className="mySwiper"
             >
-                <SwiperSlide><img src="https://i0.wp.com/tecnopymes.com.ar/wp-content/uploads/2023/10/Destacada-Polo-IT.jpg?fit=1000%2C600&ssl=1&resize=350%2C200" alt="" className='image-swiper' /></SwiperSlide>
-                <SwiperSlide><img src="https://static.wixstatic.com/media/f7a32c_ac8cd6aa86ef4e37bf82b131b0ff770f~mv2.png/v1/fill/w_517,h_312,al_c,q_85,enc_auto/IMG_news.png" alt="" className='image-swiper' /></SwiperSlide>
-                <SwiperSlide><img src="https://www.poloitcorrientes.com.ar/assets/images/poloitcorrientes__.jpg" className='image-swiper' alt="" /></SwiperSlide>
+                <SwiperSlide><img src="https://www.enfasys.net/wp-content/uploads/2023/10/Destacada-Polo-IT.jpg" alt="persona dando discurso de capacitacion" className='image-swiper' /></SwiperSlide>
+                <SwiperSlide><img src="https://static.wixstatic.com/media/f7a32c_ac8cd6aa86ef4e37bf82b131b0ff770f~mv2.png/v1/fill/w_517,h_312,al_c,q_85,enc_auto/IMG_news.png" alt="pagina del polo a travez de una tablet" className='image-swiper' /></SwiperSlide>
+                <SwiperSlide><img src="https://pbs.twimg.com/media/F7mVG7-XYAABHlb?format=jpg&name=large" className='image-swiper' alt="miembros del polo IT" /></SwiperSlide>
             </Swiper>
             <div>
                 <h1 className='home__title'>Bienvenidos a las empresas socias del polo IT</h1>
@@ -39,17 +39,17 @@ const Inicio = () => {
             <main className='main__home'>
                 <div className='main__home-info'>
                     <h2 className='main__home-title'>Empresas socias</h2>
-                    <p>Visita el listado de las empresas socias al Polo IT. Encuentra oportunidades y conéctate de acuerdo a tus necesecidades</p>
+                    <p>Visita el listado de las empresas asociadas al Polo IT. Encuentra oportunidades de acuerdo a tus necesecidades</p>
                     <Link to='/company/1' className='link__home'><Button contenido='Ver Empresas'/></Link>
                 </div>
                 <div className='main__home-info'>
-                    <h2 className='main__home-title'>Nuestro Objetivo</h2>
-                    <p>Descubre más sobre nosotros y cuál es la inspiración detrás de la creación de este proyecto.</p>
+                    <h2 className='main__home-title'>Nuestro objetivo</h2>
+                    <p>Descubre más sobre nosotros y cuál es la inspiración detrás del desarrollo de este proyecto</p>
                     <Link to='/about' className='link__home'><Button contenido='Conocenos'/></Link>
                 </div>
                 <div className='main__home-info'>
-                    <h2 className='main__home-title'>¡Contactar con el Polo IT!</h2>
-                    <p>Si estas interesado en conocer mas, no dudes en ponerte en contacto directo con la empresa utilizando cualquiera de nuestras vías de comunicación.</p>
+                    <h2 className='main__home-title'>Contacto con el Polo IT</h2>
+                    <p>No dudes en comunicarte con la empresa utilizando cualquiera de nuestras vías de contacto</p>
                     <Link to='/contact' className='link__home'><Button contenido='Contactar'/></Link>
                 </div>
             </main>
@@ -60,7 +60,7 @@ const Inicio = () => {
 
                 <div className='main__info-polo'>
                     <h2 className='title__main-polo'>+ Sobre el Polo IT</h2>
-                    <p>También podés conocer la página oficial del Polo IT donde encontrarás más información sobre eventos, el crecimiento de la industria, eventos de capacitación, beneficios por ser parte de la comunidad IT y más.</p>
+                    <p>También podés visitar la página oficial del Polo IT donde encontrarás información sobre eventos, capacitaciones, beneficios de la comunidad, crecimiento de la industria y más.</p>
                     <a href="https://www.poloitbuenosaires.org.ar/" target="_blank" rel="noopener noreferrer"><Button contenido="Visitar sitio" styleIdBtn="btn_home-polo" /></a>
                 </div>
             </div>

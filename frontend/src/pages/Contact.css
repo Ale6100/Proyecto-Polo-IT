@@ -17,11 +17,6 @@
     text-align: center;
 }
 
-.section__contact-form > p {
-    text-align: left;
-    color: #414141;
-}
-
 .section__contact-info{
     width: 500px;
     padding: 20px;
@@ -37,10 +32,6 @@
 .section__contact-info > h2{
     text-align: center;
     color: #C51731;
-}
-
-.section__contact-info > p{
-    color: #414141;
 }
 
 .class-icons-contact{
