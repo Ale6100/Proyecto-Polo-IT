@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.css'
 import Navbar from './components/Navbar'
 import PageCompany from './pages/PageCompany'
 import Error404 from './pages/Error404';
