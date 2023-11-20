@@ -1,5 +1,6 @@
 .pageCompany-div {
     margin: 10px;
+    min-height: 100vh;
 }
 
 .pageCompany-img {

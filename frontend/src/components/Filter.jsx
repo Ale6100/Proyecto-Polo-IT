@@ -72,51 +72,51 @@ const Filter = ({ setQueryParams, filterVisible, formValues, setFormValues }) =>
             <h2>Categorías</h2>
                 
             <form onChange={changeFilter}>
-                
+                <div>
+                    <div className="container-divs">
+                        <h4>Análisis de datos</h4>
 
-                <div className="container-divs">
-                    <h4>Análisis de datos</h4>
+                        <CrearRadio p={"Big Data"} name={"bigdata"} />
 
-                    <CrearRadio p={"Big Data"} name={"bigdata"} />
+                        <CrearRadio p={"Cloud"} name={"cloud"} />
 
-                    <CrearRadio p={"Cloud"} name={"cloud"} />
+                        <CrearRadio p={"Testing"} name={"testing"} />
+                    </div>
 
-                    <CrearRadio p={"Testing"} name={"testing"} />
-                </div>
+                    <div className="container-divs">
+                        <h4>Software Propio</h4>
 
-                <div className="container-divs">
-                    <h4>Software Propio</h4>
+                        <CrearRadio p={"Software Propio"} name={"softwarepropio"} />
 
-                    <CrearRadio p={"Software Propio"} name={"softwarepropio"} />
+                        <CrearRadio p={"Software Propio Verticales"} name={"softwarepropioverticales"} />
+                    </div>
 
-                    <CrearRadio p={"Software Propio Verticales"} name={"softwarepropioverticales"} />
-                </div>
+                    <div className="container-divs">
+                        <h4>Software de Terceros</h4>
 
-                <div className="container-divs">
-                    <h4>Software de Terceros</h4>
+                        <CrearRadio p={"Software de Terceros"} name={"softwareterceros"} />
 
-                    <CrearRadio p={"Software de Terceros"} name={"softwareterceros"} />
+                        <CrearRadio p={"Software de Terceros Verticales"} name={"softwaretercerosverticales"} />
+                    </div>
 
-                    <CrearRadio p={"Software de Terceros Verticales"} name={"softwaretercerosverticales"} />
-                </div>
+                    <div className="container-divs">
+                        <h4>Sector IT</h4>
 
-                <div className="container-divs">
-                    <h4>Sector IT</h4>
+                        <CrearRadio p={"Asesoría IT"} name={"asesoriait"} />
 
-                    <CrearRadio p={"Asesoría IT"} name={"asesoriait"} />
+                        <CrearRadio p={"Mantenimiento y Soporte"} name={"mantenimiento"} />
+                    </div>
 
-                    <CrearRadio p={"Mantenimiento y Soporte"} name={"mantenimiento"} />
-                </div>
+                    <div className="container-divs">
+                        <h4>Otros</h4>
 
-                <div className="container-divs">
-                    <h4>Otros</h4>
+                        <CrearRadio p={"Actividades en el exterior"} name={"actividadesexterior"} />
 
-                    <CrearRadio p={"Actividades en el exterior"} name={"actividadesexterior"} />
+                        <CrearRadio p={"Capacitación"} name={"capacitacion"} />
 
-                    <CrearRadio p={"Capacitación"} name={"capacitacion"} />
-
-                    <CrearRadio p={"Consultoría"} name={"consultoria"} />
-                </div>                
+                        <CrearRadio p={"Consultoría"} name={"consultoria"} />
+                    </div>                 
+                </div>               
                 
                 {
                     formLimpio ||
