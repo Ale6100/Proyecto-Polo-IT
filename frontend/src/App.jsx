@@ -10,6 +10,7 @@ import About from './pages/About';
 import Inicio from './pages/Inicio';
 import { useState } from 'react';
 import estructuraFormLimpio from './assets/estructuraFormLimpio';
+import ScrollCheck from './utils/ScrollCheck';
 
 function App() {
     const [queryParams, setQueryParams] = useState("");
@@ -17,6 +18,7 @@ function App() {
 
     return (
         <BrowserRouter>
+            <ScrollCheck />
             <Navbar/>
             <Routes>
                 <Route path='/' element={<Inicio/>}/>
@@ -26,7 +28,7 @@ function App() {
                 <Route path='/about' element={<About/>}/>
                 <Route path="*" element={<Error404 />} />
             </Routes>
-            <Footer/>
+            <Footer/>                
         </BrowserRouter>
     )
 }

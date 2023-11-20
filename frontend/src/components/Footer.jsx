@@ -14,7 +14,7 @@ const Footer = () => {
                 </Links>
                 <Creditos>Diseñado por Grupo 7</Creditos>
             </Div>
-            <Parrafo>© Todos los derechos reservados: <Span>poloit@poloitbuenosaires.org.ar</Span></Parrafo>
+            <Parrafo>© Todos los derechos reservados<Span> - poloit@poloitbuenosaires.org.ar</Span></Parrafo>
         </FooterPage> 
     );
 }

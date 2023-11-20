@@ -94,8 +94,6 @@ const Contact = () => {
             <div onSubmit={handleSubmit} className="section__contact-form">
                     <h1>Contacta con el Polo IT</h1>
 
-                    <p>Completá los siguientes campos</p>
-
                     <form className="form-contact">
                         <div>
                             <label htmlFor="contact-name">Nombre<span>*</span></label>
@@ -123,7 +121,6 @@ const Contact = () => {
             </div>
             <div className="section__contact-info">
                 <h2>Información adicional</h2>
-                <p>Puedes ponerte en contacto directo con la empresa utilizando cualquiera de nuestras vías de comunicación o visitando nuestras oficinas centrales.</p>
                 <div className="container__contact-icons">
                     <span><MdOutlineMail className="class-icons-contact"/>poloit@poloitbuenosaires.org.ar</span>
                     <span><FaWhatsapp className="class-icons-contact"/><a href="https://api.whatsapp.com/send/?phone=5491157826061&text&type=phone_number&app_absent=0" target="_blank" rel="noreferrer" className="info-link">5491157826061</a></span>
