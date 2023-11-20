@@ -2,12 +2,11 @@ import styled from 'styled-components';
 
 export const FooterPage = styled.footer`
     display: flex;
-    padding:15px 0;
-    flex-direction:column;
+    padding: 15px 0;
+    flex-direction: column;
     gap:10px;
-    background: rgb(0,63,147);
     background: linear-gradient(120deg, rgba(0, 63, 147, 1) 35%, rgba(242, 14, 14, 1) 37%, rgba(242, 14, 14, 1) 63%, rgba(0, 63, 147, 1) 65%);
-
+    
     @media screen and (max-width: 768px) {
         font-size: 0.75rem;
     }
