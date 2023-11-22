@@ -14,6 +14,7 @@
     margin: 10px;
     padding: 15px;
     text-align: center;
+    width: 420px;
 }
 
 .main__home-info:hover{
@@ -125,6 +126,11 @@
 
     .main__info-polo{
         width: 100%;
+    }
+
+    .main__home-info{
+        width: 100%;
+        margin: auto;
     }
 
     #btn_home-polo{
