@@ -4,7 +4,7 @@ Bienvenido! Este proyecto fue creado bajo el contexto de la "Aceleradora IT", un
 
 Nos tomamos la libertad de crear varias páginas y funcionalidades más, los invitamos a descubrirlos ustedes mismos.
 
-`Nota`: El servicio de mail realmente funciona, pero pasada la fecha 22/11/2023 lo dejaremos inhabilitado para no enviar mails indeseados a las empresas socias.
+`Nota`: El servicio de mail funcionaba pero el 23/11/2023 lo dejaremos inhabilitado para no enviar mails indeseados a las empresas involucradas.
 
 ## Construido con 🛠️
 * HTML

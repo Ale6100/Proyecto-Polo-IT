@@ -1,11 +1,12 @@
 import "./Contact.css"
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import disabledButton from "../assets/disabledButton";
+// import disabledButton from "../assets/disabledButton";
 import { FaWhatsapp, FaMapMarkerAlt } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 import Button from "../components/Button";
 import { useEffect } from "react";
+import Swal from 'sweetalert2';
 
 const Contact = () => {
 
@@ -13,80 +14,86 @@ const Contact = () => {
         document.title = "Polo IT - Contacto";
     }, [])
 
-    /**
-     * Muestra un mensaje exitoso o de error
-     *
-     * @param {string} text - El texto a mostrar en la notificación
-     * @param {"error | success"} type - El tipo de notificación
-     */
-    const sendToast = (text, type) => toast[type](text, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-    });
+    // /**
+    //  * Muestra un mensaje exitoso o de error
+    //  *
+    //  * @param {string} text - El texto a mostrar en la notificación
+    //  * @param {"error | success"} type - El tipo de notificación
+    //  */
+    // const sendToast = (text, type) => toast[type](text, {
+    //     position: "top-right",
+    //     autoClose: 5000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "dark",
+    // });
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const form = e.target
+        Swal.fire({
+            icon: 'error',
+            title: 'Servicio no disponible',
+            text: 'El servicio de mail ya no está disponible para no molestar al Polo IT',
+        })
 
-        const button = form.lastChild.lastChild
+        // const form = e.target //? Dejamos el código original en caso de que se desee volver a habilitar
 
-        const formData = new FormData(form)
+        // const button = form.lastChild.lastChild
 
-        const name = formData.get("name")
-        const email = formData.get("email")
-        const phone = formData.get("phone")
-        const message = formData.get("message")        
+        // const formData = new FormData(form)
 
-        if (!name || !email || !message) {
-            return sendToast("Por favor, complete los campos requeridos", "error")
-        }
+        // const name = formData.get("name")
+        // const email = formData.get("email")
+        // const phone = formData.get("phone")
+        // const message = formData.get("message")        
 
-        const body = {
-            from: email,
-            to: "poloit@poloitbuenosaires.org.ar", //! Cuidado, es el mail real
-            subject: `(Ignorar) - Formulario de contacto`,
-            html: `
-            <h2>Por favor, ignore este mail</h2>
+        // if (!name || !email || !message) {
+        //     return sendToast("Por favor, complete los campos requeridos", "error")
+        // }
+
+        // const body = {
+        //     from: email,
+        //     to: "poloit@poloitbuenosaires.org.ar", //! Cuidado, es el mail real
+        //     subject: `(Ignorar) - Formulario de contacto`,
+        //     html: `
+        //     <h2>Por favor, ignore este mail</h2>
             
-            <p>Este mensaje ha sido enviado desde el formulario de contacto de <a href="https://proyecto-polo-it.netlify.app/" target="_blank" rel="noopener noreferrer">este</a> sitio web. </p>
+        //     <p>Este mensaje ha sido enviado desde el formulario de contacto de <a href="https://proyecto-polo-it.netlify.app/" target="_blank" rel="noopener noreferrer">este</a> sitio web. </p>
 
-            <p>El sitio se ha desarrollado con propósitos exclusivamente académicos como parte del proyecto "Aceleradora IT". Este proyecto involucra a egresados asociados con diversas empresas educativas, incluida EMPUJAR, a la cual nosotros (Grupo 7) pertenecemos.</p>
+        //     <p>El sitio se ha desarrollado con propósitos exclusivamente académicos como parte del proyecto "Aceleradora IT". Este proyecto involucra a egresados asociados con diversas empresas educativas, incluida EMPUJAR, a la cual nosotros (Grupo 7) pertenecemos.</p>
 
-            <p>A continuación se mostrarán los datos introducidos</p>
+        //     <p>A continuación se mostrarán los datos introducidos</p>
 
-            <div>
-                <p>Nombre: ${name}</p>
-                <p>Email: ${email}</p>
-                <p>Teléfono: ${phone || "No propocionado (es el único campo opcional)"}</p>
-                <p>Mensaje: ${message}</p>
-            </div>
-            `
-        }
+        //     <div>
+        //         <p>Nombre: ${name}</p>
+        //         <p>Email: ${email}</p>
+        //         <p>Teléfono: ${phone || "No propocionado (es el único campo opcional)"}</p>
+        //         <p>Mensaje: ${message}</p>
+        //     </div>
+        //     `
+        // }
 
-        disabledButton(button, true)
-        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/mail`, {
-            method: "POST",
-            headers: {
-                "Authorization": `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}`,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(body)
-        }).then(res => res.json())
+        // disabledButton(button, true)
+        // const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/mail`, {
+        //     method: "POST",
+        //     headers: {
+        //         "Authorization": `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}`,
+        //         "Content-Type": "application/json"
+        //     },
+        //     body: JSON.stringify(body)
+        // }).then(res => res.json())
 
-        if (res.status === "success") {
-            sendToast("El mensaje ha sido enviado exitósamente", "success")
-        } else {
-            sendToast("Error, por favor intente de nuevo más tarde", "error")
-        }
-        form.reset()
-        disabledButton(button, false)
+        // if (res.status === "success") {
+        //     sendToast("El mensaje ha sido enviado exitósamente", "success")
+        // } else {
+        //     sendToast("Error, por favor intente de nuevo más tarde", "error")
+        // }
+        // form.reset()
+        // disabledButton(button, false)
     }
 
     return (
@@ -117,7 +124,7 @@ const Contact = () => {
 
                         <Button contenido='Enviar' styleIdBtn='btn__submit-form' styleIdContainer='btn__submit-container'/>
                     </form>
-                    <ToastContainer />
+                    {/* <ToastContainer /> */}
             </div>
             <div className="section__contact-info">
                 <h2>Información adicional</h2>
