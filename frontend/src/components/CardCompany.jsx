@@ -5,7 +5,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { useNavigate, useParams } from 'react-router-dom';
 import Loader from './Loader';
 import Swal from 'sweetalert2';
-import disabledButton from '../assets/disabledButton';
+// import disabledButton from '../assets/disabledButton';
 
 const CardCompany = () => {
     const { id } = useParams() // Devuelve el id que viene en la url 
@@ -41,12 +41,11 @@ const CardCompany = () => {
         )
     }
 
-    const openFormContact = async (e) => {
+    const openFormContact = async () => {
         if (!company.mail[0]) {
             return Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Este sitio no tiene correo de contacto',
             })
         }
 
@@ -107,55 +106,60 @@ const CardCompany = () => {
         const value = await response.value
 
         if (value) {
-            const { name, email, phone, message } = value
+            Swal.fire({
+                icon: 'error',
+                title: 'Servicio no disponible',
+                text: 'El servicio de mail ya no está disponible para no molestar a las empresas involucradas',
+            })
+            // const { name, email, phone, message } = value //? Dejamos el código original en caso de que se desee volver a habilitar
 
-            const body = {
-                from: email,
-                to: company.mail[0], //! Cuidado, es el mail real
-                subject: `(Ignorar) - Contacto`,
-                html: `
-                <h2>Por favor, ignore este mail</h2>
+            // const body = {
+            //     from: email,
+            //     to: company.mail[0], //! Cuidado, es el mail real
+            //     subject: `(Ignorar) - Contacto`,
+            //     html: `
+            //     <h2>Por favor, ignore este mail</h2>
                 
-                <p>Este mensaje ha sido enviado desde el botón "CONTACTAR" del detalle de una empresa de <a href="https://proyecto-polo-it.netlify.app/" target="_blank" rel="noopener noreferrer">este</a> sitio web.</p>
+            //     <p>Este mensaje ha sido enviado desde el botón "CONTACTAR" del detalle de una empresa de <a href="https://proyecto-polo-it.netlify.app/" target="_blank" rel="noopener noreferrer">este</a> sitio web.</p>
     
-                <p>El sitio se ha desarrollado con propósitos exclusivamente académicos como parte del proyecto "Aceleradora IT". Este proyecto involucra a egresados asociados con diversas empresas educativas, incluida EMPUJAR, a la cual nosotros (Grupo 7) pertenecemos.</p>
+            //     <p>El sitio se ha desarrollado con propósitos exclusivamente académicos como parte del proyecto "Aceleradora IT". Este proyecto involucra a egresados asociados con diversas empresas educativas, incluida EMPUJAR, a la cual nosotros (Grupo 7) pertenecemos.</p>
     
-                <p>A continuación se mostrarán los datos introducidos</p>
+            //     <p>A continuación se mostrarán los datos introducidos</p>
     
-                <div>
-                    <p>Nombre: ${name}</p>
-                    <p>Email: ${email}</p>
-                    <p>Teléfono: ${phone || "No propocionado (es el único campo opcional)"}</p>
-                    <p>Mensaje: ${message}</p>
-                </div>
-                `
-            }
+            //     <div>
+            //         <p>Nombre: ${name}</p>
+            //         <p>Email: ${email}</p>
+            //         <p>Teléfono: ${phone || "No propocionado (es el único campo opcional)"}</p>
+            //         <p>Mensaje: ${message}</p>
+            //     </div>
+            //     `
+            // }
 
-            const button = e.target;
-            disabledButton(button, true);
-            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/mail`, {
-                method: "POST",
-                headers: {
-                    "Authorization": `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}`,
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(body)
-            }).then(res => res.json())
-            disabledButton(button, true);
+            // const button = e.target;
+            // disabledButton(button, true);
+            // const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/mail`, {
+            //     method: "POST",
+            //     headers: {
+            //         "Authorization": `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}`,
+            //         "Content-Type": "application/json"
+            //     },
+            //     body: JSON.stringify(body)
+            // }).then(res => res.json())
+            // disabledButton(button, true);
 
-            if (res.status === "success") {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Enviado',
-                    text: 'Se ha enviado el correo exitósamente',
-                })
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Ha ocurrido un error al enviar el correo',
-                })
-            }
+            // if (res.status === "success") {
+            //     Swal.fire({
+            //         icon: 'success',
+            //         title: 'Enviado',
+            //         text: 'Se ha enviado el correo exitósamente',
+            //     })
+            // } else {
+            //     Swal.fire({
+            //         icon: 'error',
+            //         title: 'Error',
+            //         text: 'Ha ocurrido un error al enviar el correo',
+            //     })
+            // }
         
         } else if (!response.isDismissed) {
             Swal.fire({

@@ -4,7 +4,6 @@
     align-items: center;
     height: 500px;
 }
-
 .container__detail-loader > div {
     padding: 0px;
 }
@@ -49,7 +48,7 @@
     padding: 10px;
     width: 200px;
     border-radius: 12px;
-    background: linear-gradient(120deg, rgba(0, 63, 147, 1) 35%, rgba(242, 14, 14, 1) 37%, rgba(242, 14, 14, 1) 63%, rgba(0, 63, 147, 1) 65%);    
+    background: linear-gradient(120deg, rgba(197,23,49,1) 40%, rgba(0,63,147,1) 60%);
 }
 .title-company{
     color: #C51731;
